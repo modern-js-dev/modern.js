@@ -33,8 +33,10 @@ jobs:
         run_install: false
 
     - name: Install Dependencies
-      if: ${{steps.docs-change.outputs.DOCS_CHANGE != 'docs only change'}}
       run: pnpm install --ignore-scripts --frozen-lockfile
+
+    - name: Install cypress
+      run: npx cypress install
 
     - name: Prepare
       if: ${{steps.docs-change.outputs.DOCS_CHANGE != 'docs only change'}}
