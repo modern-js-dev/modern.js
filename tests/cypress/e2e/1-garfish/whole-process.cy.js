@@ -38,6 +38,7 @@ describe('render sub app', () => {
 
     cy.get('[data-test=link-tablelist]').click();
     cy.contains('tablelist empty placeholder').should('exist');
+    cy.contains('main app info: hello world tablelist').should('exist');
     cy.contains('Tablelist home page').should('exist');
 
     cy.get('[data-test=link-dashboard]').click();

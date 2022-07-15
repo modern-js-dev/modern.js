@@ -68,7 +68,7 @@ const App: React.FC = () => {
         </Route> */}
       </Switch>
       <MApp
-        msg={'hello world'}
+        msg={'hello world tablelist'}
         loadable={{
           loading: ({ pastDelay, error }: any) => {
             if (error) {

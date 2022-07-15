@@ -51,8 +51,8 @@ function getAppInstance(
         basename: path.join(options?.basename || '/', match?.path || '/'),
         cache: true,
         props: {
-          ...appInfo.props,
-          ...userProps,
+          ...(appInfo.props ?? {}),
+          ...(userProps ?? {}),
         },
         customLoader: (provider: Provider) => {
           const {

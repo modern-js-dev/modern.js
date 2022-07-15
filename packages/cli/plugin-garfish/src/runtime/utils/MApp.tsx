@@ -28,7 +28,7 @@ export function generateMApp(
 
     componentDidMount() {
       const { domId } = this.state;
-      const { setLoadingState } = this.props;
+      const { setLoadingState, style, ...userProps } = this.props;
       const {
         beforeLoad,
         beforeMount,
@@ -90,6 +90,10 @@ export function generateMApp(
           return errorUnmountApp?.(error, appInfo, ...args);
         },
         ...otherOptions,
+        props: {
+          ...(otherOptions.props ?? {}),
+          ...(userProps ?? {}),
+        },
         insulationVariable: [
           ...(otherOptions.insulationVariable || []),
           '_SERVER_DATA',
