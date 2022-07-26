@@ -48,7 +48,7 @@ export default (): CliPlugin => ({
         return PLUGIN_SCHEMAS['@modern-js/runtime'];
       },
       addRuntimeExports() {
-        const runtimePackage = path.resolve(__dirname, '../../../../');
+        const runtimePackage = path.resolve(__dirname, '../');
         runtimeExportsUtils.addExport(`export * from '${runtimePackage}'`);
       },
       async beforeRestart() {

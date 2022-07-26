@@ -18,7 +18,7 @@ export default (): CliPlugin => ({
     const runtimeConfigMap = new Map<string, any>();
 
     let pluginsExportsUtils: any;
-    const runtimeModulePath = path.resolve(__dirname, '../');
+    const runtimeModulePath = path.resolve(__dirname, './router.js');
 
     return {
       config() {

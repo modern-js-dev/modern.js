@@ -18,7 +18,7 @@ export default (): CliPlugin => ({
     const ssrConfigMap = new Map<string, any>();
 
     let pluginsExportsUtils: any;
-    const ssrModulePath = path.resolve(__dirname, '../');
+    const ssrModulePath = path.resolve(__dirname, './ssr.js');
 
     return {
       config() {

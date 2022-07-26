@@ -16,7 +16,7 @@ export default (): CliPlugin => ({
     const stateConfigMap = new Map<string, any>();
 
     let pluginsExportsUtils: any;
-    const stateModulePath = path.resolve(__dirname, '../');
+    const stateModulePath = path.resolve(__dirname, './state.js');
 
     return {
       config() {
