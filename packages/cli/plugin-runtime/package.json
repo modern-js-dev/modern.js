@@ -166,7 +166,8 @@
       "files": [
         "src/**/*",
         "tsconfig.json",
-        "package.json"
+        "package.json",
+        "modern.config.js"
       ],
       "output": [
         "dist/**/*"
