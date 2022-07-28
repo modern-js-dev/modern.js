@@ -14,21 +14,19 @@
   "version": "1.5.0",
   "jsnext:source": "./src/index.ts",
   "types": "./src/index.ts",
-  "main": "./dist/js/node/index.js",
-  "module": "./dist/js/treeshaking/index.js",
-  "jsnext:modern": "./dist/js/modern/index.js",
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "node": {
         "jsnext:source": "./src/index.ts",
-        "import": "./dist/js/modern/index.js",
-        "require": "./dist/js/node/index.js"
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
       },
-      "default": "./dist/js/treeshaking/index.js"
+      "default": "./dist/index.js"
     },
     "./cli": {
       "jsnext:source": "./src/index.ts",
-      "default": "./dist/js/node/index.js"
+      "default": "./dist/index.js"
     }
   },
   "bin": {
@@ -46,7 +44,6 @@
     "@babel/runtime": "^7.18.0",
     "@modern-js/new-action": "workspace:^1.3.12",
     "@modern-js/plugin": "workspace:^1.4.1",
-    "@modern-js/plugin-changeset": "workspace:^1.4.0",
     "@modern-js/plugin-i18n": "workspace:^1.3.0",
     "@modern-js/plugin-jarvis": "workspace:^1.2.14",
     "@modern-js/utils": "workspace:^1.7.12",
@@ -57,6 +54,7 @@
     "p-map": "^4.0.0"
   },
   "devDependencies": {
+    "@modern-js/plugin-changeset": "workspace:*",
     "@scripts/build": "workspace:*",
     "@scripts/jest-config": "workspace:*",
     "@types/jest": "^27",
@@ -84,7 +82,8 @@
       "files": [
         "src/**/*",
         "tsconfig.json",
-        "package.json"
+        "package.json",
+        "modern.config.js"
       ],
       "output": [
         "dist/**/*"

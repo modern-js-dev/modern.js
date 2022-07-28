@@ -2904,7 +2904,7 @@ importers:
       '@modern-js/css-config': workspace:^1.2.8
       '@modern-js/new-action': workspace:^1.3.12
       '@modern-js/plugin': workspace:^1.4.2
-      '@modern-js/plugin-changeset': workspace:^1.4.0
+      '@modern-js/plugin-changeset': workspace:*
       '@modern-js/plugin-i18n': workspace:^1.3.0
       '@modern-js/plugin-jarvis': workspace:^1.2.14
       '@modern-js/style-compiler': workspace:^1.2.13
@@ -2948,7 +2948,6 @@ importers:
       '@modern-js/css-config': link:../../cli/css-config
       '@modern-js/new-action': link:../../generator/new-action
       '@modern-js/plugin': link:../../toolkit/plugin
-      '@modern-js/plugin-changeset': link:../../cli/plugin-changeset
       '@modern-js/plugin-i18n': link:../../cli/plugin-i18n
       '@modern-js/plugin-jarvis': link:../../cli/plugin-jarvis
       '@modern-js/style-compiler': link:../../toolkit/compiler/style
@@ -2965,6 +2964,7 @@ importers:
       rollup-plugin-hashbang: 3.0.0_rollup@2.75.7
       signal-exit: 3.0.7
     devDependencies:
+      '@modern-js/plugin-changeset': link:../../cli/plugin-changeset
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/babel__core': 7.1.19
@@ -2988,7 +2988,7 @@ importers:
       '@modern-js/core': workspace:^1.13.0
       '@modern-js/new-action': workspace:^1.3.12
       '@modern-js/plugin': workspace:^1.4.1
-      '@modern-js/plugin-changeset': workspace:^1.4.0
+      '@modern-js/plugin-changeset': workspace:*
       '@modern-js/plugin-i18n': workspace:^1.3.0
       '@modern-js/plugin-jarvis': workspace:^1.2.14
       '@modern-js/utils': workspace:^1.7.12
@@ -3011,7 +3011,6 @@ importers:
       '@modern-js/core': link:../../cli/core
       '@modern-js/new-action': link:../../generator/new-action
       '@modern-js/plugin': link:../../toolkit/plugin
-      '@modern-js/plugin-changeset': link:../../cli/plugin-changeset
       '@modern-js/plugin-i18n': link:../../cli/plugin-i18n
       '@modern-js/plugin-jarvis': link:../../cli/plugin-jarvis
       '@modern-js/utils': link:../../toolkit/utils
@@ -3021,6 +3020,7 @@ importers:
       md5: 2.3.0
       p-map: 4.0.0
     devDependencies:
+      '@modern-js/plugin-changeset': link:../../cli/plugin-changeset
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/jest': 27.5.2
