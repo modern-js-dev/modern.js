@@ -14,21 +14,21 @@
   "version": "1.4.0",
   "jsnext:source": "./src/index.ts",
   "types": "./src/index.ts",
-  "main": "./dist/js/node/index.js",
-  "module": "./dist/js/treeshaking/index.js",
-  "jsnext:modern": "./dist/js/modern/index.js",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "jsnext:modern": "./dist/es/index.js",
   "exports": {
     ".": {
       "node": {
         "jsnext:source": "./src/index.ts",
-        "import": "./dist/js/modern/index.js",
-        "require": "./dist/js/node/index.js"
+        "import": "./dist/es/index.js",
+        "require": "./dist/lib/index.js"
       },
-      "default": "./dist/js/treeshaking/index.js"
+      "default": "./dist/es/index.js"
     },
     "./cli": {
       "jsnext:source": "./src/index.ts",
-      "default": "./dist/js/node/index.js"
+      "default": "./dist/lib/index.js"
     }
   },
   "scripts": {
@@ -46,7 +46,6 @@
     "@changesets/read": "^0.5.5",
     "@modern-js/plugin-i18n": "workspace:^1.3.0",
     "@modern-js/utils": "workspace:^1.8.0",
-    "execa": "^5.1.1",
     "resolve-from": "^5.0.0"
   },
   "devDependencies": {
@@ -70,7 +69,8 @@
       "files": [
         "src/**/*",
         "tsconfig.json",
-        "package.json"
+        "package.json",
+        "modern.config.js"
       ],
       "output": [
         "dist/**/*"
