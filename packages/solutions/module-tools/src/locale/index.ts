@@ -1,5 +1,4 @@
 import { Import } from '@modern-js/utils';
-
 import { ZH_LOCALE } from './zh';
 import { EN_LOCALE } from './en';
 

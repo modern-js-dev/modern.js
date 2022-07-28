@@ -1,23 +1,13 @@
 import * as path from 'path';
 import type { Stats } from 'fs';
-import { fs, Import, dotenv, globby, slash } from '@modern-js/utils';
+import { fs, dotenv, globby, slash } from '@modern-js/utils';
 import type { PluginAPI } from '@modern-js/core';
 import onExit from 'signal-exit';
 import type { Platform } from '../types';
+import { existTsConfigFile } from '../utils/tsconfig';
+import { valideBeforeTask } from '../utils/valide';
+import { build as buildFeature } from '../features/build';
 
-const tsConfigutils: typeof import('../utils/tsconfig') = Import.lazy(
-  '../utils/tsconfig',
-  require,
-);
-
-const valid: typeof import('../utils/valide') = Import.lazy(
-  '../utils/valide',
-  require,
-);
-const buildFeature: typeof import('../features/build') = Import.lazy(
-  '../features/build',
-  require,
-);
 /**
  * init work before build task.
  * @param api
@@ -82,12 +72,12 @@ export const build = async (
   const modernConfig = api.useResolvedConfigContext();
   const tsconfigPath = path.join(appDirectory, tsconfigName);
   const outputPath = modernConfig.output.path ?? 'dist';
-  const isTsProject = tsConfigutils.existTsConfigFile(tsconfigPath);
+  const isTsProject = existTsConfigFile(tsconfigPath);
   const enableDtsGen = isTsProject && dts;
 
-  valid.valideBeforeTask({ modernConfig, tsconfigPath });
+  valideBeforeTask({ modernConfig, tsconfigPath });
 
-  await buildFeature.build(api, {
+  await buildFeature(api, {
     enableWatchMode: watch,
     enableDtsGen,
     isTsProject,

@@ -3,11 +3,7 @@ import path from 'path';
 import type { NormalizedConfig } from '@modern-js/core';
 import type { PostcssOption } from '@modern-js/style-compiler';
 import { chalk, Import, fs } from '@modern-js/utils';
-
-const constants: typeof import('./constants') = Import.lazy(
-  './constants',
-  require,
-);
+import { clearFlag } from './constants';
 
 const cssConfig: typeof import('@modern-js/css-config') = Import.lazy(
   '@modern-js/css-config',
@@ -61,7 +57,7 @@ export const logTemplate = (
     .map(p => {
       p.trim();
 
-      return `${leftBorderFlag}${p.replace(constants.clearFlag, '')}`;
+      return `${leftBorderFlag}${p.replace(clearFlag, '')}`;
     }) // 移除 clearFlag
     .slice(0, maxLength) // 控制长度
     .filter(s => s !== leftBorderFlag) // 过滤空字符串

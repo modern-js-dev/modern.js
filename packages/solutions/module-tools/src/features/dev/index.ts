@@ -1,10 +1,6 @@
-import { chalk, Import, inquirer } from '@modern-js/utils';
+import { chalk, inquirer } from '@modern-js/utils';
 import type { PluginAPI } from '@modern-js/core';
-
-const color: typeof import('../../utils/color') = Import.lazy(
-  '../../utils/color',
-  require,
-);
+import { devMenuTitle } from '../../utils/color';
 
 export interface IDevConfig {
   appDirectory: string;
@@ -25,7 +21,7 @@ export const showMenu = async (api: PluginAPI, config: IDevConfig) => {
     // eslint-disable-next-line no-process-exit
     process.exit(0);
   }
-  const menuMessage = color.devMenuTitle('Select the debug mode:');
+  const menuMessage = devMenuTitle('Select the debug mode:');
   const { type } = await inquirer.prompt([
     {
       name: 'type',

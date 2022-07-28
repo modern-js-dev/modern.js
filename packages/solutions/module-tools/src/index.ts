@@ -1,18 +1,14 @@
-import { Import, fs } from '@modern-js/utils';
+import { fs } from '@modern-js/utils';
 import ChangesetPlugin from '@modern-js/plugin-changeset';
 import LintPlugin from '@modern-js/plugin-jarvis';
 import type { CliPlugin } from '@modern-js/core';
 import { hooks } from './hooks';
+import { devCli, buildCli, newCli } from './cli';
+import { i18n } from './locale';
+import { addSchema } from './schema';
+import { getLocaleLanguage } from './utils/language';
 
 export * from './types';
-
-const cli: typeof import('./cli') = Import.lazy('./cli', require);
-const local: typeof import('./locale') = Import.lazy('./locale', require);
-const schema: typeof import('./schema') = Import.lazy('./schema', require);
-const lang: typeof import('./utils/language') = Import.lazy(
-  './utils/language',
-  require,
-);
 
 export { defineConfig } from '@modern-js/core';
 
@@ -28,8 +24,8 @@ export default (): CliPlugin => ({
   usePlugins: isBuildMode ? [] : [ChangesetPlugin(), LintPlugin()],
 
   setup: api => {
-    const locale = lang.getLocaleLanguage();
-    local.i18n.changeLanguage({ locale });
+    const locale = getLocaleLanguage();
+    i18n.changeLanguage({ locale });
     return {
       // copy from @modern-js/app-tools/src/analyze/index.ts
       async prepare() {
@@ -45,7 +41,7 @@ export default (): CliPlugin => ({
         await hookRunners.addRuntimeExports();
       },
       validateSchema() {
-        return schema.addSchema();
+        return addSchema();
       },
       config() {
         return {
@@ -56,9 +52,9 @@ export default (): CliPlugin => ({
         };
       },
       commands({ program }) {
-        cli.devCli(program, api);
-        cli.buildCli(program, api);
-        cli.newCli(program, locale);
+        devCli(program, api);
+        buildCli(program, api);
+        newCli(program, locale);
 
         // 便于其他插件辨别
         program.$$libraryName = 'module-tools';

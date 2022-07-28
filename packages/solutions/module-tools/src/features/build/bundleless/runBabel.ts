@@ -13,6 +13,8 @@ import { InternalBuildError } from '../error';
 import type { NormalizedBundlelessBuildConfig } from '../types';
 import type { ITsconfig } from '../../../types';
 import { SectionTitleStatus, watchSectionTitle } from '../utils';
+import { resolveBabelConfig } from '../../../utils/babel';
+import { readTsConfig } from '../../../utils/tsconfig';
 
 export class BabelBuildError extends Error {
   public readonly summary?: string;
@@ -56,17 +58,6 @@ const babelCompiler: typeof import('@modern-js/babel-compiler') = Import.lazy(
   '@modern-js/babel-compiler',
   require,
 );
-
-const bc: typeof import('../../../utils/babel') = Import.lazy(
-  '../../../utils/babel',
-  require,
-);
-const ts: typeof import('../../../utils/tsconfig') = Import.lazy(
-  '../../../utils/tsconfig',
-  require,
-);
-
-// const logger: typeof import('../logger') = Import.lazy('../logger', require);
 
 interface IBuildSourceCodeConfig {
   appDirectory: string;
@@ -121,7 +112,7 @@ export const buildSourceCode = async (config: IBuildSourceCodeConfig) => {
     distDir,
     watch,
   } = config;
-  const tsconfig = ts.readTsConfig(tsconfigPath);
+  const tsconfig = readTsConfig(tsconfigPath);
   const willCompilerFiles = getWillCompilerCode(willCompilerDirOrFile, {
     tsconfig,
     isTsProject: Boolean(tsconfig),
@@ -235,7 +226,7 @@ export const runBabelBuild = async (
   const buildConfig = {
     format,
     target,
-    babelConfig: bc.resolveBabelConfig(
+    babelConfig: resolveBabelConfig(
       appDirectory,
       modernConfig,
       sourceMap,

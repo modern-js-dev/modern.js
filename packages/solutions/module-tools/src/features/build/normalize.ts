@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import { Import, lodash } from '@modern-js/utils';
+import { lodash } from '@modern-js/utils';
 import type { PluginAPI } from '@modern-js/core';
 import { mergeWith } from '@modern-js/utils/lodash';
 import type {
@@ -16,16 +16,8 @@ import type {
   NormalizedBuildConfig,
   NormalizedBundlelessBuildConfig,
 } from './types';
-
-const constants: typeof import('./constants') = Import.lazy(
-  './constants',
-  require,
-);
-
-const legacyConstants: typeof import('./legacy-constants') = Import.lazy(
-  './legacy-constants',
-  require,
-);
+import { unPresetConfigs, unPresetWithTargetConfigs } from './constants';
+import { PACKAGE_MODES, DEFAULT_PACKAGE_MODE } from './legacy-constants';
 
 export const getNormalizeModuleConfigByPackageModeAndFileds = (
   api: PluginAPI,
@@ -81,10 +73,7 @@ export const getNormalizeModuleConfigByPackageModeAndFileds = (
     (typeof packageFields === 'object' &&
       Object.keys(packageFields).length === 0)
   ) {
-    const buildConfigs =
-      legacyConstants.PACKAGE_MODES[
-        packageMode || legacyConstants.DEFAULT_PACKAGE_MODE
-      ];
+    const buildConfigs = PACKAGE_MODES[packageMode || DEFAULT_PACKAGE_MODE];
     configs = buildConfigs.map<NormalizedBundlelessBuildConfig>(config =>
       lodash.mergeWith({}, commonConfig, config),
     );
@@ -331,7 +320,6 @@ export const normalizeModuleConfig = (context: {
   // buildPreset is the second important. It can be used when buildConfig is not defined.
   // buildPreset -> buildConfig
   if (buildPreset) {
-    const { unPresetConfigs, unPresetWithTargetConfigs } = constants;
     if (unPresetConfigs[buildPreset]) {
       return normalizeBuildConfig(context, unPresetConfigs[buildPreset], deps);
     } else if (unPresetWithTargetConfigs[buildPreset]) {

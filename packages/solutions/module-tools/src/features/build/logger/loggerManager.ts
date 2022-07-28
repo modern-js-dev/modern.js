@@ -5,14 +5,10 @@
  */
 import type { ChildProcess } from 'child_process';
 import EventEmitter from 'events';
-import { chalk, Import } from '@modern-js/utils';
-import type { LoggerTextOption, LoggerText } from './logText';
-
-const logText: typeof import('./logText') = Import.lazy('./logText', require);
-const readline: typeof import('../../../utils/readline') = Import.lazy(
-  '../../../utils/readline',
-  require,
-);
+import { chalk } from '@modern-js/utils';
+import { ReadlineUtils } from '../../../utils/readline';
+import type { LoggerTextOption } from './logText';
+import { LoggerText } from './logText';
 
 export type STDOUT =
   | ChildProcess['stdout']
@@ -46,7 +42,7 @@ export class LoggerManager extends EventEmitter {
   }
 
   createLoggerText(option: LoggerTextOption) {
-    return new logText.LoggerText(option);
+    return new LoggerText(option);
   }
 
   addStdout(
@@ -107,7 +103,7 @@ export class LoggerManager extends EventEmitter {
 
   disappearCompiling() {
     if (this._compilering) {
-      readline.ReadlineUtils.clearLine(process.stdout);
+      ReadlineUtils.clearLine(process.stdout);
       this._compilering = false;
     }
   }

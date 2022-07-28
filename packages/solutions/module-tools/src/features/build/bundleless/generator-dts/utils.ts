@@ -1,16 +1,10 @@
 import * as path from 'path';
-import { Import, glob, fs, nanoid } from '@modern-js/utils';
+import { glob, fs, nanoid } from '@modern-js/utils';
 import { merge as deepMerge } from '@modern-js/utils/lodash';
 import type { NormalizedConfig } from '@modern-js/core';
 import type { ITsconfig } from '../../../../types';
-
-const babel: typeof import('../../../../utils/babel') = Import.lazy(
-  '../../../../utils/babel',
-  require,
-);
-
-const tsPathsTransform: typeof import('../../../../utils/tspaths-transform') =
-  Import.lazy('../../../../utils/tspaths-transform', require);
+import { getFinalAlias } from '../../../../utils/babel';
+import { transformDtsAlias } from '../../../../utils/tspaths-transform';
 
 export interface IGeneratorConfig {
   appDirectory: string;
@@ -98,7 +92,7 @@ export const resolveAlias = (
     watchFilenames.length > 0
       ? watchFilenames
       : glob.sync(dtsDistPath, { absolute: true });
-  const alias = babel.getFinalAlias(modernConfig, {
+  const alias = getFinalAlias(modernConfig, {
     appDirectory: config.appDirectory,
     tsconfigPath:
       config.tsconfigPath || path.join(config.appDirectory, './tsconfig.json'),
@@ -107,7 +101,7 @@ export const resolveAlias = (
   const mergedPaths = alias.isTsPath
     ? alias.paths || {}
     : { ...defaultPaths, ...(alias.paths || {}) };
-  const result = tsPathsTransform.transformDtsAlias({
+  const result = transformDtsAlias({
     filenames: dtsFilenames,
     baseUrl: path.join(config.appDirectory, output.path || 'dist'),
     paths: mergedPaths,

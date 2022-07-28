@@ -1,14 +1,17 @@
 import path from 'path';
 import type { ChildProcess } from 'child_process';
-import { Import, execa, fs, json5 } from '@modern-js/utils';
+import { execa, fs, json5 } from '@modern-js/utils';
 import type { NormalizedConfig, PluginAPI } from '@modern-js/core';
 import type { NormalizedBundlelessBuildConfig } from '../../types';
 import type { ITsconfig } from '../../../../types';
 import { InternalDTSError } from '../../error';
 import { SectionTitleStatus, watchSectionTitle } from '../../utils';
-import { getTscBinPath, IGeneratorConfig } from './utils';
-
-const utils: typeof import('./utils') = Import.lazy('./utils', require);
+import {
+  getTscBinPath,
+  IGeneratorConfig,
+  generatorTsConfig,
+  resolveAlias,
+} from './utils';
 
 const getProjectTsconfig = (tsconfigPath: string | undefined): ITsconfig => {
   if (!tsconfigPath || !fs.existsSync(tsconfigPath)) {
@@ -51,7 +54,7 @@ const generatorDts = async (_: NormalizedConfig, config: IGeneratorConfig) => {
   } = config;
 
   const userTsconfig = getProjectTsconfig(tsconfigPath);
-  const willDeleteTsconfigPath = utils.generatorTsConfig(userTsconfig, {
+  const willDeleteTsconfigPath = generatorTsConfig(userTsconfig, {
     appDirectory,
     distDir,
     sourceDir,
@@ -118,5 +121,5 @@ export const genDts = async (
   };
   await generatorDts(modernConfig, option);
   // TODO: watch 模式下无法转换
-  utils.resolveAlias(modernConfig, option);
+  resolveAlias(modernConfig, option);
 };

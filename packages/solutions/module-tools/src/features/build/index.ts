@@ -1,5 +1,5 @@
 import path from 'path';
-import { Import, fs, chalk } from '@modern-js/utils';
+import { fs, chalk } from '@modern-js/utils';
 import type { PluginAPI } from '@modern-js/core';
 import pMap from 'p-map';
 import type { IBuildFeatOption } from '../../types';
@@ -9,17 +9,9 @@ import { buildingText, buildSuccessText } from './constants';
 import { ModuleBuildError, isInternalError } from './error';
 import { getAllDeps } from './utils';
 import type { NormalizedBuildConfig } from './types';
-
-const bundle: typeof import('./bundle') = Import.lazy('./bundle', require);
-const bundleless: typeof import('./bundleless') = Import.lazy(
-  './bundleless',
-  require,
-);
-
-const bp: typeof import('./build-platform') = Import.lazy(
-  './build-platform',
-  require,
-);
+import { build as bundleBuild } from './bundle';
+import { build as bundlelessBuild } from './bundleless';
+import { buildPlatform } from './build-platform';
 
 export const checkPlatformAndRunBuild = async (
   platform: IBuildFeatOption['platform'],
@@ -28,14 +20,14 @@ export const checkPlatformAndRunBuild = async (
   const { api, isTsProject } = options;
   if (typeof platform === 'boolean' && platform) {
     if (process.env.RUN_PLATFORM) {
-      await bp.buildPlatform(api, { platform: 'all', isTsProject });
+      await buildPlatform(api, { platform: 'all', isTsProject });
     }
     return { exit: true };
   }
 
   if (typeof platform === 'string') {
     if (process.env.RUN_PLATFORM) {
-      await bp.buildPlatform(api, { platform, isTsProject });
+      await buildPlatform(api, { platform, isTsProject });
     }
     return { exit: true };
   }
@@ -50,9 +42,9 @@ export const runBuild = async (
 ) => {
   await pMap(normalizedModuleConfig, async moduleConfig => {
     if (moduleConfig.buildType === 'bundle') {
-      await bundle.build(api, moduleConfig);
+      await bundleBuild(api, moduleConfig);
     } else {
-      await bundleless.build(api, moduleConfig, config);
+      await bundlelessBuild(api, moduleConfig, config);
     }
   });
 };

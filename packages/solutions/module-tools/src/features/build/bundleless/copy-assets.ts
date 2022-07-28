@@ -1,12 +1,9 @@
 import * as path from 'path';
-import { fs, watch, glob, WatchChangeType, Import } from '@modern-js/utils';
+import { fs, watch, glob, WatchChangeType } from '@modern-js/utils';
 import type { PluginAPI } from '@modern-js/core';
 import { NormalizedBundlelessBuildConfig } from '../types';
+import { copyTask } from '../../../utils/copy';
 
-const copyUtils: typeof import('../../../utils/copy') = Import.lazy(
-  '../../../utils/copy',
-  require,
-);
 const SRC_DIRS = 'src';
 
 const copyAssets = ({
@@ -55,7 +52,7 @@ const watchAssets = (
       }
       const file = path.relative(targetDir, changedFilePath);
       fs.copyFileSync(changedFilePath, path.resolve(outputDir, file));
-      await copyUtils.copyTask({ modernConfig, appContext });
+      await copyTask({ modernConfig, appContext });
     },
     ['**/*.{js,jsx,ts,tsx,d.ts,scss,less,css,sass}'],
   );
@@ -83,7 +80,7 @@ export const copyStaticAssets = async (
     staticPath,
   );
   copyAssets({ targetDir: srcDir, outputDir: outputDirToSrc });
-  await copyUtils.copyTask({ modernConfig, appContext });
+  await copyTask({ modernConfig, appContext });
 
   if (config.watch) {
     watchAssets(api, { targetDir: srcDir, outputDir: outputDirToSrc });
