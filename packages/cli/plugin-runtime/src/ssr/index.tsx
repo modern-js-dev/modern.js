@@ -1,6 +1,6 @@
-import ReactDOM from 'react-dom';
 import type { Plugin } from '@modern-js/runtime-core';
 import { loadableReady } from '@loadable/component';
+import ReactDOM from 'react-dom/client';
 import { RenderLevel, SSRServerContext } from './serverRender/type';
 import { formatClient, mockResponse } from './utils';
 
@@ -31,22 +31,26 @@ const ssr = (): Plugin => ({
 
         if (renderLevel === RenderLevel.CLIENT_RENDER) {
           await (App as any)?.prefetch?.(context);
-          ReactDOM.render(<App context={context} />, rootElement);
+          ReactDOM.createRoot(rootElement).render(<App context={context} />);
+          //   ReactDOM.render(<App context={context} />, rootElement);
         } else if (renderLevel === RenderLevel.SERVER_RENDER) {
           loadableReady(() => {
             const hydrateContext = { ...context, _hydration: true };
-            ReactDOM.hydrate(
-              <App context={hydrateContext} />,
+
+            ReactDOM.hydrateRoot(
               rootElement,
-              () => {
+              <App
+                context={hydrateContext}
                 // won't cause component re-render because context's reference identity doesn't change
-                delete (hydrateContext as any)._hydration;
-              },
+                callback={() => {
+                  delete (hydrateContext as any)._hydration;
+                }}
+              />,
             );
           });
         } else {
           // unknown renderlevel or renderlevel is server prefetch.
-          ReactDOM.render(<App context={context} />, rootElement);
+          ReactDOM.createRoot(rootElement).render(<App context={context} />);
         }
       },
       init({ context }, next) {

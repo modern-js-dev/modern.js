@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { Plugin, runtime } from './plugin';
 import {
@@ -56,6 +56,8 @@ export const createApp = ({ plugins }: CreateAppOptions) => {
     };
 
     if (App) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error hoist-non-react-statics types not adaptor for react 18
       hoistNonReactStatics(WrapperComponent, App);
     }
 
@@ -178,7 +180,7 @@ export const bootstrap: BootStrap = async (
         },
         {
           onLast: ({ App, rootElement }) => {
-            ReactDOM.render(React.createElement(App, { context }), rootElement);
+            ReactDOM.createRoot(rootElement).render(<App />);
           },
         },
       );

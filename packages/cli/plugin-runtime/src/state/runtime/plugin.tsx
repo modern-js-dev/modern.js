@@ -38,6 +38,8 @@ const state = (config: StateConfig): Plugin => ({
           );
         };
         return next({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error hoist-non-react-statics types not adaptor for react 18
           App: hoistNonReactStatics(getStateApp, App),
         });
       },

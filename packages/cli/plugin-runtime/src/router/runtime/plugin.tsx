@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
+import { createBrowserHistory, createHashHistory, History } from 'history';
 import {
-  createBrowserHistory,
-  createHashHistory,
-  History,
-  BrowserHistoryBuildOptions,
-  HashHistoryBuildOptions,
-} from 'history';
-import { Router, StaticRouter, RouteProps } from 'react-router-dom';
+  RouteProps,
+  unstable_HistoryRouter as HistoryRouter,
+} from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom/server';
 import { RuntimeReactContext } from '@modern-js/runtime-core';
 import type { Plugin } from '@modern-js/runtime-core';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { isBrowser } from '../../common';
 import { renderRoutes, getLocation, urlJoin } from './utils';
+import { ServerRouterContext } from './context';
 
 declare global {
   interface Window {
@@ -40,15 +39,15 @@ export type SingleRouteConfig = RouteProps & {
   component?: React.ComponentType;
 };
 
-export type HistoryConfig =
-  | {
-      supportHtml5History: true;
-      historyOptions: BrowserHistoryBuildOptions;
-    }
-  | {
-      supportHtml5History: false;
-      historyOptions: HashHistoryBuildOptions;
-    };
+export interface HistoryOptions {
+  basename?: string;
+  [key: string]: any;
+}
+
+export type HistoryConfig = {
+  supportHtml5History?: boolean;
+  historyOptions?: HistoryOptions;
+};
 
 export type RouterConfig = Partial<HistoryConfig> & {
   routesConfig?: {
@@ -64,6 +63,7 @@ export const routerPlugin = ({
   history: customHistory,
   supportHtml5History = true,
   routesConfig,
+  // TODO: diff with history options 4 and 5
   historyOptions = {},
 }: RouterConfig): Plugin => {
   const isBrow = isBrowser();
@@ -88,15 +88,19 @@ export const routerPlugin = ({
               const history =
                 customHistory ||
                 (supportHtml5History
-                  ? createBrowserHistory(historyOptions)
-                  : createHashHistory(historyOptions));
+                  ? createBrowserHistory({ window })
+                  : createHashHistory({ window }));
 
+              // https://reactrouter.com/docs/en/v6/routers/history-router
               return (props: any) => (
-                <Router history={history}>
+                <HistoryRouter
+                  basename={historyOptions.basename}
+                  history={history}
+                >
                   <App {...props}>
                     {routesConfig ? renderRoutes(routesConfig, props) : null}
                   </App>
-                </Router>
+                </HistoryRouter>
               );
             }
             return (props: any) => {
@@ -111,26 +115,33 @@ export const routerPlugin = ({
                   ? urlJoin(baseUrl, historyOptions.basename as string)
                   : baseUrl;
               return (
-                <StaticRouter
-                  basename={basename === '/' ? '' : basename}
-                  location={location}
-                  context={routerContext}
-                >
-                  <App {...props}>
-                    {routesConfig ? renderRoutes(routesConfig, props) : null}
-                  </App>
-                </StaticRouter>
+                // StaticRouter props context had been removed at v6
+                // https://github.com/remix-run/react-router/issues/8406
+                <ServerRouterContext.Provider value={routerContext}>
+                  <StaticRouter
+                    basename={basename === '/' ? '' : basename}
+                    location={location}
+                  >
+                    <App {...props}>
+                      {routesConfig ? renderRoutes(routesConfig, props) : null}
+                    </App>
+                  </StaticRouter>
+                </ServerRouterContext.Provider>
               );
             };
           };
           let RouteApp = getRouteApp();
 
           if (App) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error hoist-non-react-statics types not adaptor for react 18
             RouteApp = hoistNonReactStatics(RouteApp, App);
           }
 
           if (routesConfig?.globalApp) {
             return next({
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error hoist-non-react-statics types not adaptor for react 18
               App: hoistNonReactStatics(RouteApp, routesConfig.globalApp),
             });
           }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { runtime, Plugin } from './plugin';
 
 export type RenderProps = {
@@ -27,7 +27,7 @@ export const clientRender = (
     { App, rootElement },
     {
       onLast: async ({ App, rootElement }) => {
-        ReactDOM.render(React.createElement(App), rootElement);
+        ReactDOM.createRoot(rootElement).render(App);
       },
     },
   );
