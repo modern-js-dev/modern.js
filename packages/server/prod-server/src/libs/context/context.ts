@@ -171,7 +171,7 @@ export class ModernServerContext implements ModernServerContextInterface {
     this.logger.error(
       `Web Server Error - ${dig}, error = %s, req.url = %s, req.headers = %o`,
       e instanceof Error ? e.stack || e.message : e,
-      this.path,
+      this.req.url,
       this.headers,
     );
   }

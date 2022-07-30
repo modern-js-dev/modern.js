@@ -11,6 +11,7 @@ const {
 
 const appPath = path.resolve(__dirname, '../');
 const successStatus = 200;
+const internalServerErrorStatus = 500;
 let app, appPort;
 
 beforeAll(async () => {
@@ -86,5 +87,10 @@ describe('test basic usage', () => {
     );
     expect(status).toBe(successStatus);
     expect(headers['content-type']).toBe('image/png');
+  });
+
+  it(`should show the 500 page when get wrong url parse`, async () => {
+    const { status } = await axios.get(`http://localhost:${appPort}//`);
+    expect(status).toBe(internalServerErrorStatus);
   });
 });
