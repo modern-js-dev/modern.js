@@ -88,7 +88,7 @@ import { hook } from "@modern-js/runtime/server";
 
 export default hook(({ addMiddleware }) => {
   addMiddleware(async (ctx, next) => {
-    console.info(`access url: ${req.url}`);
+    console.info(`access url: ${ctx.url}`);
     next();
   });
 });
