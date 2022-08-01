@@ -1,5 +1,5 @@
 {
-  "name": "@modern-js/webpack",
+  "name": "@modern-js/plugin-postcss",
   "description": "The meta-framework suite designed from scratch for frontend-focused modern web development.",
   "homepage": "https://modernjs.dev",
   "bugs": "https://github.com/modern-js-dev/modern.js/issues",
@@ -11,7 +11,7 @@
     "modern",
     "modern.js"
   ],
-  "version": "1.12.2",
+  "version": "1.2.8",
   "jsnext:source": "./src/index.ts",
   "types": "./src/index.ts",
   "main": "./dist/index.js",
@@ -25,72 +25,36 @@
         "require": "./dist/index.js"
       },
       "default": "./dist/index.js"
-    },
-    "./webpack-dev-middleware": "./compiled/webpack-dev-middleware/index.js",
-    "./@loadable/webpack-plugin": "./compiled/@loadable/webpack-plugin/index.js"
-  },
-  "typesVersions": {
-    "*": {
-      "webpack-dev-middleware": [
-        "./compiled/webpack-dev-middleware/types/index.d.ts"
-      ],
-      "@loadable/webpack-plugin": [
-        "./compiled/@loadable/webpack-plugin/index.d.ts"
-      ]
     }
   },
   "scripts": {
     "prepare": "pnpm build",
     "prepublishOnly": "only-allow-pnpm",
     "new": "modern new",
-    "build": "wireit",
     "dev": "tsc --watch",
+    "build": "wireit",
     "test": "wireit"
   },
   "dependencies": {
-    "@babel/core": "^7.18.0",
-    "@modern-js/babel-preset-app": "workspace:^1.5.0",
-    "@modern-js/plugin-postcss": "workspace:^1.2.8",
     "@modern-js/utils": "workspace:^1.8.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
-    "@svgr/webpack": "^6.2.1",
-    "core-js": "^3",
-    "css-minimizer-webpack-plugin": "^3.0.2",
-    "fork-ts-checker-webpack-plugin": "^7.2.1",
-    "html-loader": "3.1.0",
-    "html-webpack-plugin": "^5.3.2",
-    "mini-css-extract-plugin": "~2.4.5",
-    "node-libs-browser": "^2.2.1",
+    "caniuse-lite": "^1.0.30001332",
     "postcss": "^8.4.14",
-    "react-refresh": "0.12.0",
-    "schema-utils": "^3.1.1",
-    "style-loader": "^3.3.1",
-    "tapable": "^2.2.1",
-    "terser-webpack-plugin": "^5.1.4",
-    "ts-loader": "^9.2.5",
-    "webpack": "^5.71.0",
-    "webpack-sources": "^3.2.3"
+    "cssnano": "^5.1.12",
+    "postcss-import": "^14.0.2"
   },
   "devDependencies": {
     "@modern-js/core": "workspace:*",
-    "@modern-js/types": "workspace:*",
-    "@scripts/build": "workspace:*",
-    "@scripts/jest-config": "workspace:*",
-    "@types/css-minimizer-webpack-plugin": "^3.0.2",
     "@types/jest": "^27",
-    "@types/mini-css-extract-plugin": "~2.2.0",
     "@types/node": "^14",
-    "@types/react": "^17",
     "@types/react-dom": "^17",
+    "@types/postcss-import": "^12.0.1",
+    "sass": "^1.45.0",
+    "typescript": "^4",
+    "@scripts/build": "workspace:*",
     "jest": "^27",
-    "typescript": "^4"
+    "@scripts/jest-config": "workspace:*"
   },
   "sideEffects": false,
-  "modernConfig": {
-    "output": {
-      "packageMode": "node-js"
-    }
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",

@@ -13,3 +13,5 @@ export type SassConfig =
       options: SassLoaderOptions,
       utils: { addExcludes: (excludes: RegExp | RegExp[]) => void },
     ) => SassLoaderOptions | void);
+
+export type SassOption = LegacyFileOptions<'sync'>;

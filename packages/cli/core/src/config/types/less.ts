@@ -20,3 +20,8 @@ export type LessConfig =
       options: LessLoaderOptions,
       utils: { addExcludes: (excludes: RegExp | RegExp[]) => void },
     ) => LessLoaderOptions | void);
+
+export type LessOption = {
+  enableSourceMap?: boolean;
+  lessOption?: Less.Options;
+};

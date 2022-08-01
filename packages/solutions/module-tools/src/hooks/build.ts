@@ -1,6 +1,12 @@
 import { createParallelWorkflow, createAsyncPipeline } from '@modern-js/plugin';
-import { registerHook, NormalizedConfig } from '@modern-js/core';
-import { LessOption, SassOptions } from '@modern-js/style-compiler';
+import {
+  registerHook,
+  NormalizedConfig,
+  LessOption,
+  SassOption,
+  PostcssOption,
+} from '@modern-js/core';
+import { CompilerItem, PostcssCompilerItem } from '../style-compiler';
 
 export interface PlatformBuildOption {
   isTsProject: boolean;
@@ -23,7 +29,12 @@ export const moduleLessConfig = createAsyncPipeline<
 
 export const moduleSassConfig = createAsyncPipeline<
   { modernConfig: NormalizedConfig },
-  SassOptions<'sync'> | undefined
+  SassOption | undefined
+>();
+
+export const modulePostcssConfig = createAsyncPipeline<
+  { modernConfig: NormalizedConfig; appDirectory: string },
+  PostcssOption | undefined
 >();
 
 export const moduleTailwindConfig = createAsyncPipeline<
@@ -31,17 +42,40 @@ export const moduleTailwindConfig = createAsyncPipeline<
   any
 >();
 
+export const moduleLessCompiler = createAsyncPipeline<
+  unknown,
+  CompilerItem | undefined
+>();
+
+export const moduleSassCompiler = createAsyncPipeline<
+  unknown,
+  CompilerItem | undefined
+>();
+
+export const modulePostcssCompiler = createAsyncPipeline<
+  unknown,
+  PostcssCompilerItem | undefined
+>();
+
 export const buildHooks = {
   platformBuild,
   moduleLessConfig,
+  moduleLessCompiler,
   moduleSassConfig,
+  moduleSassCompiler,
+  modulePostcssConfig,
+  modulePostcssCompiler,
   moduleTailwindConfig,
 };
 
 export const lifecycle = () => {
   registerHook({
     moduleLessConfig,
+    moduleLessCompiler,
     moduleSassConfig,
+    moduleSassCompiler,
+    modulePostcssConfig,
+    modulePostcssCompiler,
     moduleTailwindConfig,
     platformBuild,
   });
@@ -51,7 +85,11 @@ declare module '@modern-js/core' {
   export interface Hooks {
     platformBuild: typeof platformBuild;
     moduleLessConfig: typeof moduleLessConfig;
+    moduleLessCompiler: typeof moduleLessCompiler;
     moduleSassConfig: typeof moduleSassConfig;
+    moduleSassCompiler: typeof moduleSassCompiler;
+    modulePostcssConfig: typeof modulePostcssConfig;
+    modulePostcssCompiler: typeof modulePostcssCompiler;
     moduleTailwindConfig: typeof moduleTailwindConfig;
   }
 }

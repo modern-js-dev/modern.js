@@ -51,14 +51,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.0",
-    "@modern-js/css-config": "workspace:^1.2.8",
     "@modern-js/utils": "workspace:^1.8.0",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0"
   },
   "devDependencies": {
     "@modern-js/core": "workspace:*",
-    "@modern-js/style-compiler": "workspace:*",
     "@scripts/build": "workspace:*",
     "@scripts/jest-config": "workspace:*",
     "@types/jest": "^27",

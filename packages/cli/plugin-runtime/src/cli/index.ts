@@ -15,7 +15,7 @@ export default (): CliPlugin => ({
     '@modern-js/plugin-router',
     '@modern-js/plugin-ssr',
     '@modern-js/plugin-state',
-    '@modern-js/plugin-design-token',
+    '@modern-js/plugin-tailwindcss',
   ],
   usePlugins: [PluginState(), PluginRouter(), PluginSSR()],
   setup: api => {

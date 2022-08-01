@@ -6,11 +6,7 @@ import type { PluginAPI } from '@modern-js/core';
 import { applyOptionsChain, ensureAbsolutePath } from '@modern-js/utils';
 import type { NormalizedBundleBuildConfig } from '../types';
 import { InternalBuildError } from '../error';
-import {
-  getPostcssOption,
-  SectionTitleStatus,
-  watchSectionTitle,
-} from '../utils';
+import { SectionTitleStatus, watchSectionTitle } from '../utils';
 
 export type ResolveAlias = { [index: string]: string };
 export const getAlias = (api: PluginAPI) => {
@@ -73,16 +69,19 @@ const getStyleOptionFromModern = async (api: PluginAPI) => {
     { modernConfig },
     { onLast: async (_: any) => undefined },
   );
-  const postcssOption = getPostcssOption(appDirectory, modernConfig);
+  const postcssOption = await runner.modulePostcssConfig(
+    { modernConfig, appDirectory },
+    { onLast: async (_: any) => undefined },
+  );
   if (tailwindPlugin) {
-    postcssOption.plugins?.push(tailwindPlugin);
+    postcssOption?.plugins?.push(tailwindPlugin);
   }
   return {
     less: lessOption?.lessOption,
     sass: sassOption,
     postcss: {
-      ...postcssOption.options,
-      plugins: postcssOption.plugins,
+      ...postcssOption?.options,
+      plugins: postcssOption?.plugins,
     },
   };
 };

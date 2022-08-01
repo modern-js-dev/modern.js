@@ -1,4 +1,4 @@
-import { getPostcssConfig } from '@modern-js/css-config';
+import { getPostcssConfig } from '@modern-js/plugin-postcss';
 import { CHAIN_ID } from '@modern-js/utils';
 import type { NormalizedConfig } from '@modern-js/core';
 import type WebpackChain from '@modern-js/utils/webpack-chain';

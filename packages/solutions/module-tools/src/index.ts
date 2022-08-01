@@ -1,6 +1,7 @@
 import { Import, fs } from '@modern-js/utils';
 import ChangesetPlugin from '@modern-js/plugin-changeset';
 import LintPlugin from '@modern-js/plugin-jarvis';
+import PostcssPlugin from '@modern-js/plugin-postcss';
 import type { CliPlugin } from '@modern-js/core';
 import { hooks } from './hooks';
 
@@ -25,7 +26,9 @@ export default (): CliPlugin => ({
 
   registerHook: hooks,
 
-  usePlugins: isBuildMode ? [] : [ChangesetPlugin(), LintPlugin()],
+  usePlugins: isBuildMode
+    ? [PostcssPlugin()]
+    : [ChangesetPlugin(), LintPlugin()],
 
   setup: api => {
     const locale = lang.getLocaleLanguage();

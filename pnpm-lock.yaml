@@ -239,37 +239,6 @@ importers:
       typescript: 4.7.4
       webpack: 5.73.0_1f091e9882867a645caac150cd4a7b4f
 
-  packages/cli/css-config:
-    specifiers:
-      '@modern-js/core': workspace:*
-      '@modern-js/utils': workspace:^1.8.0
-      '@scripts/build': workspace:*
-      '@scripts/jest-config': workspace:*
-      '@types/jest': ^27
-      '@types/node': ^14
-      '@types/react-dom': ^17
-      caniuse-lite: ^1.0.30001332
-      cssnano: ^5.1.12
-      jest: ^27
-      postcss: ^8.4.14
-      sass: ^1.45.0
-      typescript: ^4
-    dependencies:
-      '@modern-js/utils': link:../../toolkit/utils
-      caniuse-lite: 1.0.30001359
-      cssnano: 5.1.12_postcss@8.4.14
-      postcss: 8.4.14
-    devDependencies:
-      '@modern-js/core': link:../core
-      '@scripts/build': link:../../../scripts/build
-      '@scripts/jest-config': link:../../../scripts/jest-config
-      '@types/jest': 27.5.2
-      '@types/node': 14.18.21
-      '@types/react-dom': 17.0.17
-      jest: 27.5.1
-      sass: 1.53.0
-      typescript: 4.7.4
-
   packages/cli/plugin-bff:
     specifiers:
       '@babel/core': ^7.18.0
@@ -418,43 +387,6 @@ importers:
       '@types/jest': 27.5.2
       '@types/node': 14.18.21
       jest: 27.5.1
-      typescript: 4.7.4
-
-  packages/cli/plugin-design-token:
-    specifiers:
-      '@babel/runtime': ^7.18.0
-      '@modern-js/core': workspace:*
-      '@modern-js/plugin-testing': workspace:*
-      '@modern-js/runtime-core': workspace:*
-      '@modern-js/utils': workspace:^1.8.0
-      '@scripts/build': workspace:*
-      '@types/hoist-non-react-statics': ^3.3.1
-      '@types/jest': ^27
-      '@types/node': ^14
-      '@types/react': ^17
-      '@types/react-dom': ^17
-      hoist-non-react-statics: ^3.3.2
-      postcss: ^8.4.14
-      react: ^17.0.2
-      tailwindcss: ^2.0.4
-      typescript: ^4
-    dependencies:
-      '@babel/runtime': 7.18.6
-      '@modern-js/utils': link:../../toolkit/utils
-      hoist-non-react-statics: 3.3.2
-      tailwindcss: 2.2.19_postcss@8.4.14
-    devDependencies:
-      '@modern-js/core': link:../core
-      '@modern-js/plugin-testing': link:../plugin-testing
-      '@modern-js/runtime-core': link:../../runtime
-      '@scripts/build': link:../../../scripts/build
-      '@types/hoist-non-react-statics': 3.3.1
-      '@types/jest': 27.5.2
-      '@types/node': 14.18.21
-      '@types/react': 17.0.47
-      '@types/react-dom': 17.0.17
-      postcss: 8.4.14
-      react: 17.0.2
       typescript: 4.7.4
 
   packages/cli/plugin-docsite:
@@ -781,8 +713,6 @@ importers:
     specifiers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
-      '@modern-js/css-config': workspace:^1.2.8
-      '@modern-js/style-compiler': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
       '@scripts/jest-config': workspace:*
@@ -797,7 +727,6 @@ importers:
       webpack: ^5.71.0
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/css-config': link:../css-config
       '@modern-js/utils': link:../../toolkit/utils
       '@types/less': 3.0.3
       less: 4.1.3
@@ -805,7 +734,6 @@ importers:
       less-plugin-npm-import: 2.1.0
     devDependencies:
       '@modern-js/core': link:../core
-      '@modern-js/style-compiler': link:../../toolkit/compiler/style
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/jest': 27.5.2
@@ -837,6 +765,41 @@ importers:
       '@types/jest': 27.5.2
       '@types/node': 14.18.21
       jest: 27.5.1
+      typescript: 4.7.4
+
+  packages/cli/plugin-postcss:
+    specifiers:
+      '@modern-js/core': workspace:*
+      '@modern-js/utils': workspace:^1.8.0
+      '@scripts/build': workspace:*
+      '@scripts/jest-config': workspace:*
+      '@types/jest': ^27
+      '@types/node': ^14
+      '@types/postcss-import': ^12.0.1
+      '@types/react-dom': ^17
+      caniuse-lite: ^1.0.30001332
+      cssnano: ^5.1.12
+      jest: ^27
+      postcss: ^8.4.14
+      postcss-import: ^14.0.2
+      sass: ^1.45.0
+      typescript: ^4
+    dependencies:
+      '@modern-js/utils': link:../../toolkit/utils
+      caniuse-lite: 1.0.30001359
+      cssnano: 5.1.12_postcss@8.4.14
+      postcss: 8.4.14
+      postcss-import: 14.1.0_postcss@8.4.14
+    devDependencies:
+      '@modern-js/core': link:../core
+      '@scripts/build': link:../../../scripts/build
+      '@scripts/jest-config': link:../../../scripts/jest-config
+      '@types/jest': 27.5.2
+      '@types/node': 14.18.21
+      '@types/postcss-import': 12.0.1
+      '@types/react-dom': 17.0.17
+      jest: 27.5.1
+      sass: 1.53.0
       typescript: 4.7.4
 
   packages/cli/plugin-proxy:
@@ -965,8 +928,6 @@ importers:
     specifiers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
-      '@modern-js/css-config': workspace:^1.2.8
-      '@modern-js/style-compiler': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
       '@scripts/jest-config': workspace:*
@@ -979,13 +940,11 @@ importers:
       webpack: ^5.71.0
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/css-config': link:../css-config
       '@modern-js/utils': link:../../toolkit/utils
       sass: 1.53.0
       sass-loader: 12.6.0_sass@1.53.0+webpack@5.73.0
     devDependencies:
       '@modern-js/core': link:../core
-      '@modern-js/style-compiler': link:../../toolkit/compiler/style
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/jest': 27.5.2
@@ -1116,35 +1075,43 @@ importers:
       webpack: 5.73.0_1f091e9882867a645caac150cd4a7b4f
       webpack-chain: 6.5.1
 
-  packages/cli/plugin-tailwind:
+  packages/cli/plugin-tailwindcss:
     specifiers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
-      '@modern-js/plugin-design-token': workspace:^1.0.11
+      '@modern-js/runtime-core': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
       '@scripts/jest-config': workspace:*
+      '@types/hoist-non-react-statics': ^3.3.1
       '@types/jest': ^27
       '@types/node': ^14
+      '@types/react': ^17
       '@types/tailwindcss': ^2.2.1
+      hoist-non-react-statics: ^3.3.2
       jest: ^27
       postcss: ^8.4.14
+      react: ^17.0.2
       tailwindcss: ^2.0.4
       typescript: ^4
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/plugin-design-token': link:../plugin-design-token
       '@modern-js/utils': link:../../toolkit/utils
+      hoist-non-react-statics: 3.3.2
+      tailwindcss: 2.2.19_postcss@8.4.14
     devDependencies:
       '@modern-js/core': link:../core
+      '@modern-js/runtime-core': link:../../runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
+      '@types/hoist-non-react-statics': 3.3.1
       '@types/jest': 27.5.2
       '@types/node': 14.18.21
+      '@types/react': 17.0.47
       '@types/tailwindcss': 2.2.4
       jest: 27.5.1
       postcss: 8.4.14
-      tailwindcss: 2.2.19_postcss@8.4.14
+      react: 17.0.2
       typescript: 4.7.4
 
   packages/cli/plugin-testing:
@@ -1264,7 +1231,7 @@ importers:
       '@babel/core': ^7.18.0
       '@modern-js/babel-preset-app': workspace:^1.5.0
       '@modern-js/core': workspace:*
-      '@modern-js/css-config': workspace:^1.2.8
+      '@modern-js/plugin-postcss': workspace:^1.2.8
       '@modern-js/types': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@pmmmwh/react-refresh-webpack-plugin': ^0.5.5
@@ -1298,7 +1265,7 @@ importers:
     dependencies:
       '@babel/core': 7.18.6
       '@modern-js/babel-preset-app': link:../babel-preset-app
-      '@modern-js/css-config': link:../css-config
+      '@modern-js/plugin-postcss': link:../plugin-postcss
       '@modern-js/utils': link:../../toolkit/utils
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_645a6e79162167fda80e21cc093763a7
       '@svgr/webpack': 6.2.1
@@ -2903,13 +2870,12 @@ importers:
       '@modern-js/babel-compiler': workspace:^1.2.6
       '@modern-js/babel-preset-module': workspace:^1.4.0
       '@modern-js/core': workspace:^1.13.0
-      '@modern-js/css-config': workspace:^1.2.8
       '@modern-js/new-action': workspace:^1.3.12
       '@modern-js/plugin': workspace:^1.4.2
       '@modern-js/plugin-changeset': workspace:^1.4.0
       '@modern-js/plugin-i18n': workspace:^1.3.0
       '@modern-js/plugin-jarvis': workspace:^1.2.14
-      '@modern-js/style-compiler': workspace:^1.2.13
+      '@modern-js/plugin-postcss': workspace:^1.2.8
       '@modern-js/utils': workspace:^1.7.12
       '@rollup/plugin-json': ~4.1.0
       '@scripts/build': workspace:*
@@ -2947,13 +2913,12 @@ importers:
       '@modern-js/babel-compiler': link:../../toolkit/compiler/babel
       '@modern-js/babel-preset-module': link:../../cli/babel-preset-module
       '@modern-js/core': link:../../cli/core
-      '@modern-js/css-config': link:../../cli/css-config
       '@modern-js/new-action': link:../../generator/new-action
       '@modern-js/plugin': link:../../toolkit/plugin
       '@modern-js/plugin-changeset': link:../../cli/plugin-changeset
       '@modern-js/plugin-i18n': link:../../cli/plugin-i18n
       '@modern-js/plugin-jarvis': link:../../cli/plugin-jarvis
-      '@modern-js/style-compiler': link:../../toolkit/compiler/style
+      '@modern-js/plugin-postcss': link:../../cli/plugin-postcss
       '@modern-js/utils': link:../../toolkit/utils
       '@rollup/plugin-json': 4.1.0_rollup@2.75.7
       '@speedy-js/speedy-core': 0.13.2-alpha.3_1f091e9882867a645caac150cd4a7b4f
@@ -3061,45 +3026,6 @@ importers:
       '@types/glob': 7.2.0
       '@types/jest': 27.5.2
       '@types/node': 14.18.21
-      jest: 27.5.1
-      typescript: 4.7.4
-
-  packages/toolkit/compiler/style:
-    specifiers:
-      '@babel/runtime': ^7.18.0
-      '@modern-js/utils': workspace:^1.7.11
-      '@scripts/build': workspace:*
-      '@scripts/jest-config': workspace:*
-      '@types/jest': ^27
-      '@types/less': ^3.0.3
-      '@types/node': ^14
-      '@types/postcss-import': ^12.0.1
-      '@types/react': ^17
-      '@types/react-dom': ^17
-      '@types/tailwindcss': ^2.2.1
-      jest: ^27
-      less: ^4.1.1
-      postcss: ^8.4.14
-      postcss-import: ^14.0.2
-      sass: ^1.45.0
-      typescript: ^4
-    dependencies:
-      '@babel/runtime': 7.18.6
-      '@modern-js/utils': link:../../utils
-      less: 4.1.3
-      postcss: 8.4.14
-      postcss-import: 14.1.0_postcss@8.4.14
-      sass: 1.53.0
-    devDependencies:
-      '@scripts/build': link:../../../../scripts/build
-      '@scripts/jest-config': link:../../../../scripts/jest-config
-      '@types/jest': 27.5.2
-      '@types/less': 3.0.3
-      '@types/node': 14.18.21
-      '@types/postcss-import': 12.0.1
-      '@types/react': 17.0.47
-      '@types/react-dom': 17.0.17
-      '@types/tailwindcss': 2.2.4
       jest: 27.5.1
       typescript: 4.7.4
 
@@ -4070,7 +3996,7 @@ importers:
       twin.macro: ^2
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/plugin-tailwindcss': link:../../../../../packages/cli/plugin-tailwind
+      '@modern-js/plugin-tailwindcss': link:../../../../../packages/cli/plugin-tailwindcss
       '@modern-js/runtime': link:../../../../../packages/cli/plugin-runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -12892,6 +12818,7 @@ packages:
       acorn: 7.4.1
       acorn-walk: 7.2.0
       xtend: 4.0.2
+    dev: false
 
   /acorn-walk/7.2.0:
     resolution: {integrity: sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==}
@@ -13422,6 +13349,7 @@ packages:
 
   /arg/5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
+    dev: false
 
   /argparse/1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
@@ -14832,6 +14760,7 @@ packages:
   /camelcase-css/2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
+    dev: false
 
   /camelcase-keys/2.1.0:
     resolution: {integrity: sha512-bA/Z/DERHKqoEOrp+qeGKw1QlvEQkGZSc0XaY6VnTxZr+Kv1G5zFwttpjv8qxZ/sBPT4nthwZaAcsAZTJlSKXQ==}
@@ -15367,6 +15296,7 @@ packages:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
+    dev: false
 
   /color-support/1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
@@ -15386,6 +15316,7 @@ packages:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
+    dev: false
 
   /colord/2.9.2:
     resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
@@ -16122,6 +16053,7 @@ packages:
 
   /css-color-names/0.0.4:
     resolution: {integrity: sha512-zj5D7X1U2h2zsXOAM8EyUREBnnts6H+Jm+d1M2DbiQQcUtnqgQsMrdo8JW9R80YFUmIdBZeMu5wvYM7hcgWP/Q==}
+    dev: false
 
   /css-declaration-sorter/6.3.0_postcss@8.4.14:
     resolution: {integrity: sha512-OGT677UGHJTAVMRhPO+HJ4oKln3wkBTwtDFH0ojbqm+MJm6xuDMHp2nkhh/ThaBqq20IbraBQSWKfSLNHQO9Og==}
@@ -16289,6 +16221,7 @@ packages:
 
   /css-unit-converter/1.1.2:
     resolution: {integrity: sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==}
+    dev: false
 
   /css-what/6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
@@ -16821,6 +16754,7 @@ packages:
 
   /defined/1.0.0:
     resolution: {integrity: sha512-Y2caI5+ZwS5c3RiNDJ6u53VhQHv+hHKwhkI1iHvceKUHw9Df6EK2zRLfjejRgMuCuxK7PfSWIMwWecceVvThjQ==}
+    dev: false
 
   /degenerator/3.0.2:
     resolution: {integrity: sha512-c0mef3SNQo56t6urUU6tdQAs+ThoD0o9B9MJ8HEt7NQcGEILCRFqQb7ZbP9JAv+QF1Ky5plydhMR/IrqWDm+TQ==}
@@ -16957,6 +16891,7 @@ packages:
       acorn-node: 1.8.2
       defined: 1.0.0
       minimist: 1.2.6
+    dev: false
 
   /dev-null/0.1.1:
     resolution: {integrity: sha512-nMNZG0zfMgmdv8S5O0TM5cpwNbGKRGPCxVsr0SmA3NZZy9CYBbuNLL0PD3Acx9e5LIUgwONXtM9kM6RlawPxEQ==}
@@ -17020,6 +16955,7 @@ packages:
 
   /didyoumean/1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
+    dev: false
 
   /diff-match-patch/1.0.5:
     resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
@@ -17081,6 +17017,7 @@ packages:
 
   /dlv/1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
+    dev: false
 
   /dmg-builder/22.7.0:
     resolution: {integrity: sha512-5Ea2YEz6zSNbyGzZD+O9/MzmaXb6oa15cSKWo4JQ1xP4rorOpte7IOj2jcwYjtc+Los2gu1lvT314OC1OZIWgg==}
@@ -20810,6 +20747,7 @@ packages:
 
   /hex-color-regex/1.1.0:
     resolution: {integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==}
+    dev: false
 
   /hexoid/1.0.0:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
@@ -20889,9 +20827,11 @@ packages:
 
   /hsl-regex/1.0.0:
     resolution: {integrity: sha512-M5ezZw4LzXbBKMruP+BNANf0k+19hDQMgpzBIYnya//Al+fjNct9Wf3b1WedLqdEs2hKBvxq/jh+DsHJLj0F9A==}
+    dev: false
 
   /hsla-regex/1.0.0:
     resolution: {integrity: sha512-7Wn5GMLuHBjZCb2bTmnDOycho0p/7UVaAeqXZGbHrBCl6Yd/xDhQJAXe6Ga9AXJH2I5zY1dEdYw2u1UptnSBJA==}
+    dev: false
 
   /html-encoding-sniffer/2.0.1:
     resolution: {integrity: sha512-D5JbOMBIR/TVZkubHT+OyT2705QvogUW4IBn6nHd756OwieSF9aDYFj4dv6HHEVGYbHaLETa3WggZYWWMyy3ZQ==}
@@ -20947,6 +20887,7 @@ packages:
   /html-tags/3.2.0:
     resolution: {integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==}
     engines: {node: '>=8'}
+    dev: false
 
   /html-void-elements/1.0.5:
     resolution: {integrity: sha512-uE/TxKuyNIcx44cIWnjr/rfIATDH7ZaOMmstu0CwhFG1Dunhlp4OC6/NMbhiwoq5BpW0ubi303qnEk/PZj614w==}
@@ -21604,6 +21545,7 @@ packages:
 
   /is-arrayish/0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
+    dev: false
 
   /is-bigint/1.0.4:
     resolution: {integrity: sha512-zB9CruMamjym81i2JZ3UMn54PKGsQzsJeo6xvN3HJJ4CAsQNB6iRutp2To77OfCNuoxspsIhzaPoO1zyCEhFOg==}
@@ -21670,6 +21612,7 @@ packages:
       hsla-regex: 1.0.0
       rgb-regex: 1.0.1
       rgba-regex: 1.0.0
+    dev: false
 
   /is-core-module/2.9.0:
     resolution: {integrity: sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==}
@@ -23766,6 +23709,7 @@ packages:
 
   /lodash.topath/4.5.2:
     resolution: {integrity: sha512-1/W4dM+35DwvE/iEd1M9ekewOSTlpFekhw9mhAtrwjVqUr83/ilQiyAvmg4tVX7Unkcfl1KC+i9WdaT4B6aQcg==}
+    dev: false
 
   /lodash.truncate/4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==}
@@ -24547,6 +24491,7 @@ packages:
   /modern-normalize/1.1.0:
     resolution: {integrity: sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==}
     engines: {node: '>=6'}
+    dev: false
 
   /moment-timezone/0.5.34:
     resolution: {integrity: sha512-3zAEHh2hKUs3EXLESx/wsgw6IQdusOT8Bxm3D9UrHPQR7zlMmzwybC8zHEM1tQ4LJwP7fcxrWr8tuBg05fFCbg==}
@@ -24802,6 +24747,7 @@ packages:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
     dependencies:
       lodash: 4.17.21
+    dev: false
 
   /node-fetch/2.6.1:
     resolution: {integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==}
@@ -25203,6 +25149,7 @@ packages:
   /object-hash/2.2.0:
     resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
     engines: {node: '>= 6'}
+    dev: false
 
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -26145,6 +26092,7 @@ packages:
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.4.14
+    dev: false
 
   /postcss-load-config/3.1.4_postcss@8.4.14:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
@@ -26161,6 +26109,7 @@ packages:
       lilconfig: 2.0.5
       postcss: 8.4.14
       yaml: 1.10.2
+    dev: false
 
   /postcss-loader/4.3.0_postcss@7.0.39+webpack@4.46.0:
     resolution: {integrity: sha512-M/dSoIiNDOo8Rk0mUqoj4kpGq91gcxCfb9PoyZVdZ76/AuhxylHDYZblNE8o+EQ9AMSASeMFEKxZf5aU6wlx1Q==}
@@ -26350,6 +26299,7 @@ packages:
     dependencies:
       postcss: 8.4.14
       postcss-selector-parser: 6.0.10
+    dev: false
 
   /postcss-nesting/10.1.4_postcss@8.4.14:
     resolution: {integrity: sha512-2ixdQ59ik/Gt1+oPHiI1kHdwEI8lLKEmui9B1nl6163ANLC+GewQn7fXMxJF2JSb4i2MKL96GU8fIiQztK4TTA==}
@@ -26528,6 +26478,7 @@ packages:
 
   /postcss-value-parser/3.3.1:
     resolution: {integrity: sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==}
+    dev: false
 
   /postcss-value-parser/4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
@@ -26755,6 +26706,7 @@ packages:
   /pretty-hrtime/1.0.3:
     resolution: {integrity: sha512-66hKPCr+72mlfiSjlEB1+45IjXSqvVAIy6mocupoww4tBFE9R9IhwwUGoI4G++Tc9Aq+2rxOt0RFU6gPcrte0A==}
     engines: {node: '>= 0.8'}
+    dev: false
 
   /pretty-time/1.1.0:
     resolution: {integrity: sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==}
@@ -27083,6 +27035,7 @@ packages:
       glob: 7.2.3
       postcss: 8.4.14
       postcss-selector-parser: 6.0.10
+    dev: false
 
   /q/1.4.1:
     resolution: {integrity: sha512-/CdEdaw49VZVmyIDGUQKDDT53c7qBkO6g5CefWz91Ae+l4+cRtcDYwMTXh6me4O8TMldeGHG3N2Bl84V78Ywbg==}
@@ -27165,6 +27118,7 @@ packages:
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
+    dev: false
 
   /ramda/0.27.2:
     resolution: {integrity: sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==}
@@ -28354,6 +28308,7 @@ packages:
     dependencies:
       css-unit-converter: 1.1.2
       postcss-value-parser: 3.3.1
+    dev: false
 
   /redux-logger/3.0.6:
     resolution: {integrity: sha512-JoCIok7bg/XpqA1JqCqXFypuqBbQzGQySrhFzewB7ThcnysTO30l4VCst86AuB9T9tuT03MAA56Jw2PNhRSNCg==}
@@ -28868,9 +28823,11 @@ packages:
 
   /rgb-regex/1.0.1:
     resolution: {integrity: sha512-gDK5mkALDFER2YLqH6imYvK6g02gpNGM4ILDZ472EwWfXZnC2ZEpoB2ECXTyOVUKuk/bPJZMzwQPBYICzP+D3w==}
+    dev: false
 
   /rgba-regex/1.0.0:
     resolution: {integrity: sha512-zgn5OjNQXLUTdq8m17KdaicF6w89TZs8ZU8y0AYENIU6wG8GG6LLm0yLSiPY8DmaYmHdgRW8rnApjoT0fQRfMg==}
+    dev: false
 
   /right-align/0.1.3:
     resolution: {integrity: sha512-yqINtL/G7vs2v+dFIZmFUDbnVyFUJFKd6gK22Kgo6R4jfJGFtisKyncWDDULgjfqf4ASQuIQyjJ7XZ+3aWpsAg==}
@@ -29498,6 +29455,7 @@ packages:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
     dependencies:
       is-arrayish: 0.3.2
+    dev: false
 
   /single-line-log/1.1.2:
     resolution: {integrity: sha512-awzaaIPtYFdexLr6TBpcZSGPB6D1RInNO/qNetgaJloPDF/D0GkVtLvGEp8InfmLV7CyLyQ5fIRP+tVN/JmWQA==}
@@ -30646,6 +30604,7 @@ packages:
       tmp: 0.2.1
     transitivePeerDependencies:
       - ts-node
+    dev: false
 
   /tapable/1.1.3:
     resolution: {integrity: sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==}

@@ -127,9 +127,6 @@ export const INTERNAL_PLUGINS: {
   },
   // TODO: Maybe can remove it
   '@modern-js/plugin-nocode': { cli: '@modern-js/plugin-nocode/cli' },
-  '@modern-js/plugin-design-token': {
-    cli: '@modern-js/plugin-design-token/cli',
-  },
 };
 
 /**
@@ -193,6 +190,14 @@ export const PLUGIN_SCHEMAS = {
       target: 'tools.tailwindcss',
       schema: { typeof: ['object', 'function'] },
     },
+    {
+      target: 'source.designSystem',
+      schema: { typeof: ['object'] },
+    },
+    {
+      target: 'source.designSystem.supportStyledComponents',
+      schema: { type: ['boolean'] },
+    },
   ],
   '@modern-js/plugin-proxy': [
     {
@@ -216,17 +221,6 @@ export const PLUGIN_SCHEMAS = {
     {
       target: 'runtime.state',
       schema: { type: ['boolean', 'object'] },
-    },
-  ],
-  '@modern-js/plugin-design-token': [
-    // Legacy Features
-    {
-      target: 'source.designSystem',
-      schema: { typeof: ['object'] },
-    },
-    {
-      target: 'source.designSystem.supportStyledComponents',
-      schema: { type: ['boolean'] },
     },
   ],
   '@modern-js/plugin-router': [

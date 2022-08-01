@@ -1,10 +1,7 @@
 import { Import, PLUGIN_SCHEMAS } from '@modern-js/utils';
 import type { CliPlugin } from '@modern-js/core';
 
-const cssConfig: typeof import('@modern-js/css-config') = Import.lazy(
-  '@modern-js/css-config',
-  require,
-);
+const cssConfig: typeof import('./options') = Import.lazy('./options', require);
 const mlc: typeof import('./module-less-config') = Import.lazy(
   './module-less-config',
   require,
@@ -86,5 +83,6 @@ export default (): CliPlugin => ({
       };
     },
     moduleLessConfig: mlc.moduleLessConfig,
+    moduleLessCompiler: mlc.moduleLessCompiler,
   }),
 });

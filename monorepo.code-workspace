@@ -73,10 +73,6 @@
       "path": "packages/server/create-request"
     },
     {
-      "name": "@modern-js/css-config",
-      "path": "packages/cli/css-config"
-    },
-    {
       "name": "@modern-js/dependence-generator",
       "path": "packages/generator/generators/dependence-generator"
     },
@@ -217,6 +213,10 @@
       "path": "packages/cli/plugin-less"
     },
     {
+      "name": "@modern-js/plugin-postcss",
+      "path": "packages/cli/plugin-postcss"
+    },
+    {
       "name": "@modern-js/plugin-garfish",
       "path": "packages/cli/plugin-garfish"
     },
@@ -303,10 +303,6 @@
     {
       "name": "@modern-js/storybook-generator",
       "path": "packages/generator/generators/storybook-generator"
-    },
-    {
-      "name": "@modern-js/style-compiler",
-      "path": "packages/toolkit/compiler/style"
     },
     {
       "name": "@modern-js/tailwindcss-generator",

@@ -15,15 +15,14 @@ export default (): CliPlugin => ({
   name: '@modern-js/plugin-sass',
 
   setup: api => {
-    const cssConfig: typeof import('@modern-js/css-config') = Import.lazy(
-      '@modern-js/css-config',
+    const cssConfig: typeof import('./options') = Import.lazy(
+      './options',
       require,
     );
     const msc: typeof import('./module-sass-config') = Import.lazy(
       './module-sass-config',
       require,
     );
-
     return {
       validateSchema() {
         return PLUGIN_SCHEMAS['@modern-js/plugin-sass'];
@@ -89,6 +88,7 @@ export default (): CliPlugin => ({
         };
       },
       moduleSassConfig: msc.moduleSassConfig,
+      moduleSassCompiler: msc.moduleSassCompiler,
     };
   },
 });

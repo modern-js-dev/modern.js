@@ -321,8 +321,8 @@ export const TASKS: TaskConfig[] = [
     ],
   },
   {
-    packageDir: 'cli/css-config',
-    packageName: '@modern-js/css-config',
+    packageDir: 'cli/plugin-postcss',
+    packageName: '@modern-js/plugin-postcss',
     dependencies: [
       {
         name: 'postcss-value-parser',

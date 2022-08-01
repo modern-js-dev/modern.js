@@ -4,6 +4,7 @@ import type {
   Stringifier,
   AcceptedPlugin,
   SourceMapOptions,
+  ProcessOptions,
 } from 'postcss';
 
 export type PostCSSOptions = {
@@ -34,3 +35,9 @@ export type PostCSSLoaderOptions = {
    */
   postcssOptions?: PostCSSOptions;
 };
+
+export interface PostcssOption {
+  enableSourceMap?: boolean;
+  plugins?: AcceptedPlugin[];
+  options: ProcessOptions;
+}

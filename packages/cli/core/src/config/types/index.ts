@@ -21,8 +21,8 @@ import type {
 import type { AcceptedPlugin as PostCSSPlugin } from 'postcss';
 import type { PluginConfig } from '../../loadPlugins';
 import type { TestConfig, JestConfig } from './test';
-import type { SassConfig, SassLoaderOptions } from './sass';
-import type { LessConfig, LessLoaderOptions } from './less';
+import type { SassConfig, SassLoaderOptions, SassOption } from './sass';
+import type { LessConfig, LessLoaderOptions, LessOption } from './less';
 import type { UnbundleConfig } from './unbundle';
 import type {
   SSGConfig,
@@ -31,7 +31,7 @@ import type {
   SSGSingleEntryOptions,
 } from './ssg';
 import type { ElectronConfig } from './electron';
-import type { PostCSSLoaderOptions } from './postcss';
+import type { PostCSSLoaderOptions, PostcssOption } from './postcss';
 import type { TsLoaderOptions } from './ts-loader';
 
 type AutoprefixerOptions = autoprefixer.Options;
@@ -44,10 +44,13 @@ export type {
   TestConfig,
   JestConfig,
   UnbundleConfig,
+  PostcssOption,
   SassConfig,
   SassLoaderOptions,
+  SassOption,
   LessConfig,
   LessLoaderOptions,
+  LessOption,
   SSGConfig,
   SSGRouteOptions,
   SSGMultiEntryOptions,
@@ -403,6 +406,7 @@ export interface UserConfig {
    * @requires `electron` plugin
    */
   electron?: ElectronConfig;
+  // eslint-disable-next-line max-lines
 }
 
 export type ConfigParam =
@@ -416,4 +420,34 @@ export interface LoadedConfig {
   dependencies: string[];
   pkgConfig: UserConfig;
   jsConfig: UserConfig;
+}
+
+export interface StyleOption {
+  less?: LessOption;
+  sass?: SassOption;
+  postcss?: PostcssOption;
+}
+
+export interface ResolveStyleItemParams {
+  file: string;
+  projectDir: string;
+  stylesDir: string;
+  outDir: string;
+  enableVirtualDist: boolean;
+  options: StyleOption;
+}
+
+export type ResolveParams = Omit<ResolveStyleItemParams, 'file'> & {
+  files: string[];
+};
+
+export type ProjectOption = Omit<ResolveStyleItemParams, 'file' | 'options'>;
+
+export interface SingleFileStyleCompilerResult {
+  code: number; // 0 success, 1 fail
+  filename: string;
+  content: string;
+  error: string | null;
+  sourceMapFileName?: string;
+  sourceMap?: string;
 }
