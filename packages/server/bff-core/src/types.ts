@@ -44,13 +44,14 @@ export type InputSchemaMeata = Extract<
   | HttpMetadata.Params
 >;
 
-export type ValidateFunc = (
-  helper: ExecuteHelper,
+export type ValidateFunc<Outputs> = (
+  helper: ExecuteHelper<Outputs>,
   next: () => Promise<any>,
 ) => Promise<any>;
 
-export type ExecuteHelper = {
+export type ExecuteHelper<Outputs> = {
   result?: any;
+  outputs: Outputs;
   readonly inputs: any;
 };
 
@@ -59,11 +60,12 @@ export type MetadataHelper = {
   getMetadata: <T = any>(key: any) => T;
 };
 
-export type Operator<Input> = {
+export type Operator<Input, Output = Input> = {
   name: string;
   inputType?: Input;
+  outputType?: Output;
   metadata?: (helper: MetadataHelper) => void;
-  validate?: ValidateFunc;
+  validate?: ValidateFunc<Output>;
 };
 
 export type MaybeAsync<T> = Promise<T> | T;
@@ -76,8 +78,14 @@ export type ApiRunner<
 export type NonNullable<T> = Exclude<T, null | undefined>;
 
 export type ExtractInputType<T> = {
-  [key in keyof T]: T[key] extends Operator<any>
+  [key in keyof T]: T[key] extends Operator<any, any>
     ? NonNullable<T[key]['inputType']>
+    : void;
+};
+
+export type ExtractOuputType<T> = {
+  [key in keyof T]: T[key] extends Operator<any, any>
+    ? NonNullable<T[key]['outputType']>
     : void;
 };
 

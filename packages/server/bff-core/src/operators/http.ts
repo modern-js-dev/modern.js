@@ -15,9 +15,23 @@ export interface ResponseMeta {
   value: unknown;
 }
 
-const validateInput = async <T>(schema: z.ZodType<T>, input: unknown) => {
+type UnknownKeysParam = 'passthrough' | 'strict' | 'strip';
+
+const validateInput = async <
+  T extends z.ZodRawShape,
+  UnknownKeys extends UnknownKeysParam = 'strip',
+  Catchall extends z.ZodTypeAny = z.ZodTypeAny,
+  Output = z.objectOutputType<T, Catchall>,
+  Input = z.objectInputType<T, Catchall>,
+  Def extends z.ZodTypeDef = z.ZodTypeDef,
+>(
+  schema:
+    | z.ZodObject<T, UnknownKeys, Catchall, Output, Input>
+    | z.ZodType<Output, Def, Input>,
+  input: Input,
+): Promise<Output> => {
   try {
-    await schema.parseAsync(input);
+    return await schema.parseAsync(input);
   } catch (error) {
     const { z: zod } = require('zod');
     if (error instanceof (zod as typeof z).ZodError) {
@@ -52,11 +66,22 @@ export const Patch = createHttpOperator(HttpMethod.Patch);
 export const Option = createHttpOperator(HttpMethod.Option);
 export const Head = createHttpOperator(HttpMethod.Head);
 
-export const Data = <T>(
-  schema: z.ZodType<T>,
-): Operator<{
-  data: T;
-}> => {
+export const Data = <
+  T extends z.ZodRawShape,
+  UnknownKeys extends UnknownKeysParam = 'strip',
+  Catchall extends z.ZodTypeAny = z.ZodTypeAny,
+  Output = z.objectOutputType<T, Catchall>,
+  Input = z.objectInputType<T, Catchall>,
+>(
+  schema: z.ZodObject<T, UnknownKeys, Catchall, Output, Input> | z.ZodType,
+): Operator<
+  {
+    data: Input;
+  },
+  {
+    data: Output;
+  }
+> => {
   return {
     name: HttpMetadata.Data,
     metadata({ setMetadata }) {
@@ -65,17 +90,28 @@ export const Data = <T>(
     async validate(helper, next) {
       const { inputs } = helper;
       const { data } = inputs;
-      await validateInput(schema, data);
+      helper.outputs.data = await validateInput(schema, data);
       return next();
     },
   };
 };
 
-export const Query = <T>(
-  schema: z.ZodType<T>,
-): Operator<{
-  query: T;
-}> => {
+export const Query = <
+  T extends z.ZodRawShape,
+  UnknownKeys extends UnknownKeysParam = 'strip',
+  Catchall extends z.ZodTypeAny = z.ZodTypeAny,
+  Output = z.objectOutputType<T, Catchall>,
+  Input = z.objectInputType<T, Catchall>,
+>(
+  schema: z.ZodObject<T, UnknownKeys, Catchall, Output, Input> | z.ZodType,
+): Operator<
+  {
+    query: Input;
+  },
+  {
+    query: Output;
+  }
+> => {
   return {
     name: HttpMetadata.Query,
     metadata({ setMetadata }) {
@@ -84,17 +120,28 @@ export const Query = <T>(
     async validate(helper, next) {
       const { inputs } = helper;
       const { query } = inputs;
-      await validateInput(schema, query);
+      helper.outputs.query = await validateInput(schema, query);
       return next();
     },
   };
 };
 
-export const Params = <T>(
-  schema: z.ZodType<T>,
-): Operator<{
-  params: T;
-}> => {
+export const Params = <
+  T extends z.ZodRawShape,
+  UnknownKeys extends UnknownKeysParam = 'strip',
+  Catchall extends z.ZodTypeAny = z.ZodTypeAny,
+  Output = z.objectOutputType<T, Catchall>,
+  Input = z.objectInputType<T, Catchall>,
+>(
+  schema: z.ZodObject<T, UnknownKeys, Catchall, Output, Input> | z.ZodType,
+): Operator<
+  {
+    params: Input;
+  },
+  {
+    params: Output;
+  }
+> => {
   return {
     name: HttpMetadata.Params,
     metadata({ setMetadata }) {
@@ -103,17 +150,28 @@ export const Params = <T>(
     async validate(helper, next) {
       const { inputs } = helper;
       const { params } = inputs;
-      await validateInput(schema, params);
+      helper.outputs.params = await validateInput(schema, params);
       return next();
     },
   };
 };
 
-export const Headers = <T>(
-  schema: z.ZodType<T>,
-): Operator<{
-  headers: T;
-}> => {
+export const Headers = <
+  T extends z.ZodRawShape,
+  UnknownKeys extends UnknownKeysParam = 'strip',
+  Catchall extends z.ZodTypeAny = z.ZodTypeAny,
+  Output = z.objectOutputType<T, Catchall>,
+  Input = z.objectInputType<T, Catchall>,
+>(
+  schema: z.ZodObject<T, UnknownKeys, Catchall, Output, Input>,
+): Operator<
+  {
+    headers: Input;
+  },
+  {
+    headers: Output;
+  }
+> => {
   return {
     name: HttpMetadata.Headers,
     metadata({ setMetadata }) {
@@ -122,7 +180,7 @@ export const Headers = <T>(
     async validate(helper, next) {
       const { inputs } = helper;
       const { headers } = inputs;
-      await validateInput(schema, headers);
+      helper.outputs.headers = await validateInput(schema, headers);
       return next();
     },
   };

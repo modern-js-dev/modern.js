@@ -4,6 +4,7 @@ import type {
   ApiRunner,
   ArrayToObject,
   ExtractInputType,
+  ExtractOuputType,
   MetadataHelper,
   ExecuteHelper,
   Operator,
@@ -19,12 +20,12 @@ interface Runner {
 type NextFunction = () => void;
 
 export function Api<
-  Operators extends Operator<any>[],
+  Operators extends Operator<any, any>[],
   Res extends MaybeAsync<any>,
 >(
   ...args: [
     ...operators: Operators,
-    handler: (arg: ArrayToObject<ExtractInputType<Operators>>) => Res,
+    handler: (arg: ArrayToObject<ExtractOuputType<Operators>>) => Res,
   ]
 ): ApiRunner<
   ExtractInputType<Operators> extends void[]
@@ -35,7 +36,7 @@ export function Api<
   const handler = args.pop() as (...args: any) => any;
   validateFunction(handler, 'Apihandler');
 
-  const operators = args as Operator<any>[];
+  const operators = args as Operator<any, any>[];
   const metadataHelper: MetadataHelper = {
     getMetadata(key: any) {
       return Reflect.getMetadata(key, runner);
@@ -55,18 +56,21 @@ export function Api<
     .filter(operator => operator.validate)
     .map(operator => operator.validate!);
 
-  async function runner(inputs: any) {
-    const executeHelper: ExecuteHelper = {
+  async function runner<T>(inputs: T) {
+    const executeHelper: ExecuteHelper<T> = {
       result: null,
       get inputs() {
         return inputs;
+      },
+      outputs: {
+        ...inputs,
       },
     };
 
     const stack = [...validateHandlers];
 
-    stack.push(async (helper: ExecuteHelper, next: NextFunction) => {
-      const res = await handler(inputs);
+    stack.push(async (helper: ExecuteHelper<T>, next: NextFunction) => {
+      const res = await handler(helper.outputs);
       helper.result = res;
       return next();
     });
