@@ -91,6 +91,7 @@ const bundleRequireWithCatch = async (
   try {
     const mod = await bundleRequire(configFile, {
       autoClear: false,
+      root: appDirectory,
       getOutputFile: async (filePath: string) => {
         const defaultOutputFileName = path.basename(
           await defaultGetOutputFile(filePath),

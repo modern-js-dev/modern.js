@@ -43,6 +43,11 @@ export interface Options {
    * auto clear bundle file
    */
   autoClear?: boolean;
+
+  /**
+   * root path
+   */
+  root: string;
 }
 
 export const defaultGetOutputFile = async (filepath: string) =>
@@ -140,6 +145,14 @@ export async function bundle(filepath: string, options?: Options) {
         setup(_build) {
           _build.onResolve({ filter: EXTERNAL_REGEXP }, args => {
             let external = true;
+            const root = options?.root ?? path.dirname(filepath);
+            const realPath = require.resolve(args.path, {
+              paths: [args.importer || root],
+            });
+            // if the real path is a package, don't external
+            if (!realPath.includes('node_modules/')) {
+              external = false;
+            }
             // FIXME: windows external entrypoint
             if (args.kind === 'entry-point') {
               external = false;
