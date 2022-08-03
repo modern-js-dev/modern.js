@@ -4,9 +4,10 @@
     "declaration": false,
     "jsx": "preserve",
     "baseUrl": "./",
+    "noEmit": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
-    "paths": {},
+    "sourceMap": true,
     "types": ["node", "jest"]
-  }
+  },
+  "paths": {}
 }

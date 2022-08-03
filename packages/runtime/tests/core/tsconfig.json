@@ -5,7 +5,8 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "isolatedModules": true,
-    "paths": {}
-  },
-  "include": ["src", "types", "type.d.ts"]
+    "esModuleInterop": true,
+    "paths": {},
+    "types": ["node", "jest"]
+  }
 }

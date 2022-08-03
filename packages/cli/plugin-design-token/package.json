@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@modern-js/plugin-testing": "workspace:*",
-    "@modern-js/runtime-core": "workspace:*",
+    "@modern-js/runtime": "workspace:*",
     "@modern-js/core": "workspace:*",
     "@scripts/build": "workspace:*",
     "@types/jest": "^27",
@@ -71,7 +71,8 @@
   },
   "sideEffects": false,
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "@modern-js/runtime": "workspace:^1.4.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

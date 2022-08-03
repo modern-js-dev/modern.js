@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { RuntimeReactContext } from '@modern-js/runtime-core';
-import type { Plugin } from '@modern-js/runtime-core';
+import { RuntimeReactContext } from '@modern-js/runtime';
+import type { Plugin } from '@modern-js/runtime';
 import { initFetch, ModernFetch } from './fetch';
 
-declare module '@modern-js/runtime-core' {
+declare module '@modern-js/runtime' {
   interface RuntimeContext {
     // TODO: FIXME
     SSRContext: any;

@@ -1,5 +1,5 @@
 {
-  "name": "@modern-js/runtime-core",
+  "name": "@modern-js/runtime",
   "description": "The meta-framework suite designed from scratch for frontend-focused modern web development.",
   "homepage": "https://modernjs.dev",
   "bugs": "https://github.com/modern-js-dev/modern.js/issues",
@@ -11,7 +11,7 @@
     "modern",
     "modern.js"
   ],
-  "version": "1.5.4",
+  "version": "1.4.1",
   "jsnext:source": "./src/index.ts",
   "types": "./src/index.ts",
   "main": "./dist/js/node/index.js",
@@ -21,27 +21,75 @@
     ".": {
       "node": {
         "jsnext:source": "./src/index.ts",
-        "import": "./dist/js/modern/index.js",
-        "require": "./dist/js/node/index.js"
+        "default": "./dist/js/node/index.js"
       },
       "default": "./dist/js/treeshaking/index.js"
     },
+    "./loadable": {
+      "jsnext:source": "./src/exports/loadable.ts",
+      "node": "./dist/js/node/exports/loadable.js",
+      "default": "./dist/js/treeshaking/exports/loadable.js"
+    },
+    "./head": {
+      "jsnext:source": "./src/exports/head.ts",
+      "node": "./dist/js/node/exports/head.js",
+      "default": "./dist/js/treeshaking/exports/head.js"
+    },
     "./styled": {
-      "jsnext:source": "./src/styled.ts",
-      "node": {
-        "import": "./dist/js/modern/styled.js",
-        "require": "./dist/js/node/styled.js"
-      },
-      "default": "./dist/js/treeshaking/styled.js"
+      "jsnext:source": "./src/exports/styled.ts",
+      "node": "./dist/js/node/exports/styled.js",
+      "default": "./dist/js/treeshaking/exports/styled.js"
+    },
+    "./server": {
+      "jsnext:source": "./src/exports/server.ts",
+      "node": "./dist/js/node/exports/server.js",
+      "default": "./dist/js/treeshaking/exports/server.js"
+    },
+    "./router": {
+      "jsnext:source": "./src/exports/router.ts",
+      "node": "./dist/js/node/exports/router.js",
+      "default": "./dist/js/treeshaking/exports/router.js"
+    },
+    "./ssr": {
+      "jsnext:source": "./src/exports/ssr.ts",
+      "node": "./dist/js/node/exports/ssr.js",
+      "default": "./dist/js/treeshaking/exports/ssr.js"
+    },
+    "./model": {
+      "jsnext:source": "./src/exports/model.ts",
+      "node": "./dist/js/node/exports/model.js",
+      "default": "./dist/js/treeshaking/exports/model.js"
+    },
+    "./cli": {
+      "jsnext:source": "./src/cli/index.ts",
+      "default": "./dist/js/node/cli/index.js"
     }
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./dist/types/index.d.ts"
+        "./type.d.ts"
+      ],
+      "loadable": [
+        "./dist/types/exports/loadable.d.ts"
+      ],
+      "head": [
+        "./dist/types/exports/head.d.ts"
       ],
       "styled": [
-        "./dist/types/styled.d.ts"
+        "./dist/types/exports/styled.d.ts"
+      ],
+      "server": [
+        "./dist/types/exports/server.d.ts"
+      ],
+      "ssr": [
+        "./dist/types/exports/ssr.d.ts"
+      ],
+      "router": [
+        "./dist/types/exports/router.d.ts"
+      ],
+      "model": [
+        "./types/model.d.ts"
       ]
     }
   },
@@ -50,41 +98,68 @@
     "prepublishOnly": "only-allow-pnpm && pnpm build -- --platform",
     "new": "modern new",
     "build": "wireit",
-    "dev": "modern build --watch",
     "test": "wireit"
   },
   "dependencies": {
+    "@babel/core": "^7.18.0",
     "@babel/runtime": "^7.18.0",
+    "@modern-js/utils": "workspace:^1.8.0",
     "@modern-js/plugin": "workspace:^1.4.2",
-    "@types/styled-components": "^5.1.14",
+    "@modern-js/webpack": "workspace:^1.12.2",
+    "@modern-js-reduck/plugin-auto-actions": "^1.0.2",
+    "@modern-js-reduck/plugin-devtools": "^1.0.3",
+    "@modern-js-reduck/plugin-effects": "^1.0.2",
+    "@modern-js-reduck/plugin-immutable": "^1.0.1",
+    "@modern-js-reduck/react": "^1.0.1",
+    "@modern-js-reduck/store": "^1.0.3",
+    "@loadable/component": "^5.15.0",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/server": "^5.15.1",
+    "react-helmet": "^6.1.0",
+    "react-side-effect": "^2.1.1",
+    "react-is": "^17",
+    "serialize-javascript": "^6.0.0",
+    "history": "^4.7.9",
+    "react-router-dom": "^5.1.2",
     "hoist-non-react-statics": "^3.3.2",
-    "invariant": "^2.2.4",
+    "redux-logger": "^3.0.6",
     "styled-components": "^5.3.1",
-    "react-is": "^17"
+    "invariant": "^2.2.4",
+    "@types/redux-logger": "^3.0.9",
+    "@types/history": "^4.7.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/loadable__component": "^5.13.4",
+    "@types/react-helmet": "^6.1.2",
+    "@types/styled-components": "^5.1.14"
   },
   "devDependencies": {
+    "@modern-js/core": "workspace:*",
     "@modern-js/types": "workspace:*",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^7.0.1",
-    "@types/hoist-non-react-statics": "^3.3.1",
-    "@types/invariant": "^2.2.30",
+    "@scripts/build": "workspace:*",
+    "@scripts/jest-config": "workspace:*",
+    "react": "^17",
+    "typescript": "^4",
+    "jest": "^27",
+    "react-dom": "^17",
+    "ts-jest": "^27.0.4",
     "@types/jest": "^27",
     "@types/node": "^14",
     "@types/react": "^17",
     "@types/react-dom": "^17",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4",
-    "@scripts/build": "workspace:*",
-    "jest": "^27",
-    "@scripts/jest-config": "workspace:*"
+    "@types/invariant": "^2.2.30",
+    "@types/react-side-effect": "^1.1.1",
+    "@types/loadable__webpack-plugin": "^5.7.3",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/serialize-javascript": "^5.0.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/react-hooks": "^7.0.1"
   },
   "sideEffects": false,
+  "modernConfig": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "types": "./dist/types/index.d.ts"
+    "types": "./type.d.ts"
   },
   "wireit": {
     "build": {

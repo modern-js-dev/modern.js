@@ -270,10 +270,6 @@
     },
     {
       "name": "@modern-js/runtime",
-      "path": "packages/cli/plugin-runtime"
-    },
-    {
-      "name": "@modern-js/runtime-core",
       "path": "packages/runtime"
     },
     {

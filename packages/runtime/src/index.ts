@@ -1,25 +1,30 @@
-export * from './wrap';
-export * from './render';
-export * from './initial';
+import '@modern-js/core';
+import type { StateConfig } from './state';
+import type { RouterConfig } from './router';
 
+export type { Plugin, RuntimeContext, TRuntimeContext } from './core';
 export {
+  createApp,
   createPlugin,
-  createRuntime,
-  runtime,
-  registerInit,
+  useLoader,
+  bootstrap,
+  RuntimeReactContext,
   registerPrefetch,
-} from './plugin';
+  defineConfig,
+  registerInit,
+  useRuntimeContext,
+} from './core';
 
-export type { Plugin } from './plugin';
+declare module './core' {
+  interface AppConfig {
+    router?: RouterConfig | boolean;
+    state?: StateConfig | boolean;
+  }
+}
 
-export { defineConfig, getConfig } from './app-config';
-export type { AppConfig } from './app-config';
-
-// compatible
-export * from './compatible';
-
-export type { TRuntimeContext, RuntimeContext } from './runtime-context';
-export { RuntimeReactContext } from './runtime-context';
-export * from './loader';
-
-export * from '@modern-js/plugin';
+declare module '@modern-js/core' {
+  interface RuntimeConfig {
+    router?: RouterConfig | boolean;
+    state?: StateConfig | boolean;
+  }
+}

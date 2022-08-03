@@ -1,6 +1,6 @@
 import React from 'react';
 import { createApp } from '@modern-js/runtime';
-import type { Plugin } from '@modern-js/runtime-core';
+import type { Plugin } from '@modern-js/runtime';
 import { state, router } from '@modern-js/runtime/plugins';
 import type { RouterConfig } from '@modern-js/runtime/router';
 import type { StoryFn as StoryFunction } from '@storybook/addons';
