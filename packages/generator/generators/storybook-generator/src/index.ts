@@ -6,6 +6,7 @@ import {
   isTsProject,
   getPackageManager,
   getPackageManagerText,
+  fs,
 } from '@modern-js/generator-utils';
 import {
   DependenceGenerator,
@@ -53,6 +54,14 @@ const handleTemplateFile = async (
     context.config.runtimeDependeceVersion ||
     `^${await getPackageVersion(runtimeDependence)}`;
 
+  // adjust react-dom dependence
+  const pkg = await fs.readJSON(
+    path.join(context.materials.default.basePath, 'package.json'),
+  );
+  const isExitReactDom =
+    pkg.devDependencies['react-dom'] || pkg.dependencies['react-dom'];
+  const updateDependence = isExitReactDom ? {} : { 'react-dom': '^17' };
+
   await appApi.runSubGenerator(
     getGeneratorPath(DependenceGenerator, context.config.distTag),
     undefined,
@@ -60,6 +69,7 @@ const handleTemplateFile = async (
       ...context.config,
       devDependencies: {
         ...(context.config.devDependencies || {}),
+        ...updateDependence,
         [runtimeDependence]: runtimeDependenceVersion,
       },
       isSubGenerator: true,
