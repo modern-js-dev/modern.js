@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { loadableReady } from '@loadable/component';
-import type { Plugin } from '../core';
+import type { Plugin, RuntimeContext } from '../core';
 import { RenderLevel, SSRServerContext } from './serverRender/type';
 import { formatClient, mockResponse } from './utils';
 
@@ -30,11 +30,16 @@ const ssr = (): Plugin => ({
         const renderLevel = window?._SSR_DATA?.renderLevel;
 
         if (renderLevel === RenderLevel.CLIENT_RENDER) {
-          await App?.prefetch?.(context);
+          await (App as any)?.prefetch?.(context);
           ReactDOM.render(<App context={context} />, rootElement);
         } else if (renderLevel === RenderLevel.SERVER_RENDER) {
           loadableReady(() => {
-            const hydrateContext = { ...context, _hydration: true };
+            const hydrateContext: Partial<RuntimeContext> & {
+              _hydration?: boolean;
+            } = {
+              ...context,
+              _hydration: true,
+            };
             ReactDOM.hydrate(
               <App context={hydrateContext} />,
               rootElement,

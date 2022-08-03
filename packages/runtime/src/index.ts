@@ -3,7 +3,6 @@ import type { RouterConfig } from './router';
 
 export type { Plugin, RuntimeContext, TRuntimeContext } from './core';
 export {
-  initialWrapper,
   createApp,
   createPlugin,
   useLoader,

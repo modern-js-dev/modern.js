@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { runtime, Plugin } from './plugin';
+import { runtime, Plugin } from '../../src/core/plugin';
 
 export type RenderProps = {
   App: React.ComponentType;

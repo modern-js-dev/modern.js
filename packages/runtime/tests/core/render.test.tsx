@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import { initialRender, createRuntime } from '../src';
+import { createRuntime } from '../../src/core';
+import { initialRender } from '../utils';
 
 describe('render', () => {
   it('server', async () => {
@@ -8,9 +9,7 @@ describe('render', () => {
     const render = initialRender(
       [
         runtime.createPlugin(() => ({
-          server: ({ App: App1 }) => ({
-            markup: ReactDOM.renderToStaticMarkup(<App1 />),
-          }),
+          server: ({ App: App1 }) => ReactDOM.renderToStaticMarkup(<App1 />),
         })),
       ],
       runtime,
@@ -22,7 +21,7 @@ describe('render', () => {
 
     const result = await render.serverRender({ App });
 
-    expect(result).toStrictEqual({ markup: '<div>App</div>' });
+    expect(result).toStrictEqual('<div>App</div>');
   });
 
   it('client', async () => {

@@ -1,7 +1,3 @@
-export * from './wrap';
-export * from './render';
-export * from './initial';
-
 export {
   createPlugin,
   createRuntime,

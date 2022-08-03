@@ -49,6 +49,12 @@ export default (): CliPlugin => ({
 
         stateConfigMap.set(entryName, stateConfig);
 
+        if (!stateConfig) {
+          return {
+            entrypoint,
+            imports,
+          };
+        }
         const getEnabledPlugins = () => {
           const internalPlugins = [
             'immer',
@@ -57,22 +63,26 @@ export default (): CliPlugin => ({
             'devtools',
           ];
 
-          return internalPlugins.filter(name => stateConfig[name] !== false);
-        };
+          if (stateConfig === true) {
+            return internalPlugins;
+          }
 
-        if (stateConfig) {
-          imports.push({
-            value: '@modern-js/runtime/plugins',
-            specifiers: [
-              {
-                imported: PLUGIN_IDENTIFIER,
-              },
-            ],
-          });
-          imports.push({
-            value: '@modern-js/runtime/model',
-            specifiers: getEnabledPlugins().map(imported => ({ imported })),
-            initialize: `
+          return internalPlugins.filter(
+            name => (stateConfig as Record<string, boolean>)[name] !== false,
+          );
+        };
+        imports.push({
+          value: '@modern-js/runtime/plugins',
+          specifiers: [
+            {
+              imported: PLUGIN_IDENTIFIER,
+            },
+          ],
+        });
+        imports.push({
+          value: '@modern-js/runtime/model',
+          specifiers: getEnabledPlugins().map(imported => ({ imported })),
+          initialize: `
                 const createStatePlugins = (config) => {
                   const plugins = [];
 
@@ -87,8 +97,7 @@ export default (): CliPlugin => ({
                   return plugins;
                 }
               `,
-          });
-        }
+        });
 
         return {
           entrypoint,

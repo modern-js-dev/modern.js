@@ -1,4 +1,4 @@
-import { createLoaderManager } from '../src/loader/loaderManager';
+import { createLoaderManager } from '../../src/core/loader/loaderManager';
 
 describe('loaderManager', () => {
   test('basic usage', async () => {

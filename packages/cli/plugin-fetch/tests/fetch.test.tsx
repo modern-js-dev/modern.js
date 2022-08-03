@@ -1,7 +1,8 @@
 import React from 'react';
-import { initialWrapper, createPlugin } from '@modern-js/runtime';
+import { createPlugin } from '@modern-js/runtime';
 import { render } from '@testing-library/react';
 import { fetchPlugin, useFetch } from '../src/plugin';
+import { initialWrapper } from '../../../runtime/tests/utils';
 
 describe.skip('@modern-js/plugin-fetch', () => {
   it('base usage', () => {
@@ -9,7 +10,7 @@ describe.skip('@modern-js/plugin-fetch', () => {
       createPlugin(() => ({
         hoc: ({ App: App1 }, next) => next({ App: App1 }),
       })),
-      fetchPlugin,
+      fetchPlugin as any,
     ]);
 
     interface Props {

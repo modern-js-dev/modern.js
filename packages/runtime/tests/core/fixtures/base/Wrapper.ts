@@ -1,4 +1,4 @@
-import { initialRuntime } from '../../..';
+import { initialRuntime } from '../../../utils';
 import App from './App';
 
 const IS_BROWSER = process.env.MODERN_TARGET === 'browser';
@@ -12,10 +12,7 @@ const { wrap, render } = initialRuntime(plugins);
 const Wrapper = wrap(App, { config });
 
 if (IS_BROWSER) {
-  render.clientRender(
-    { Component: Wrapper, config },
-    document.getElementById(MOUNT_ID)!,
-  );
+  render.clientRender({ App: Wrapper }, document.getElementById(MOUNT_ID)!);
 }
 
 export default Wrapper;

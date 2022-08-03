@@ -1,6 +1,6 @@
 import React from 'react';
-import { runtime, Plugin } from './plugin';
-import { RuntimeReactContext } from './runtime-context';
+import { runtime, Plugin } from '../../src/core/plugin';
+import { RuntimeReactContext } from '../../src/core/runtime-context';
 
 export type WrapOptions = Record<string, unknown>;
 
