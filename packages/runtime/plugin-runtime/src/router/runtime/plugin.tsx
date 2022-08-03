@@ -7,10 +7,10 @@ import {
   HashHistoryBuildOptions,
 } from 'history';
 import { Router, StaticRouter, RouteProps } from 'react-router-dom';
-import { RuntimeReactContext } from '@modern-js/runtime-core';
-import type { Plugin } from '@modern-js/runtime-core';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import type { Plugin } from '../../core';
 import { isBrowser } from '../../common';
+import { RuntimeReactContext } from '../../core';
 import { renderRoutes, getLocation, urlJoin } from './utils';
 
 declare global {

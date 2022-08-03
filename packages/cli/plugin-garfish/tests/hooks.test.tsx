@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { createApp } from '@modern-js/runtime-core';
+import { createApp } from '@modern-js/runtime';
 import '@testing-library/jest-dom';
 
 import ModernGarfishPlugin, {

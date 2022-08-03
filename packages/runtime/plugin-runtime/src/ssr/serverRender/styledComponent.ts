@@ -1,4 +1,4 @@
-import { ServerStyleSheet } from '@modern-js/runtime-core/styled';
+import { ServerStyleSheet } from 'styled-components';
 import { RenderHandler } from './type';
 
 export const toHtml: RenderHandler = (jsx, renderer, next) => {

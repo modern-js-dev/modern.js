@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
 import path from 'path';
-import { registerPrefetch } from '@modern-js/runtime-core';
-import type { Plugin } from '@modern-js/runtime-core';
+import { registerPrefetch } from '../core';
+import type { Plugin } from '../core';
 
 import { isBrowser } from '../common';
 import { SSRServerContext } from './serverRender/type';

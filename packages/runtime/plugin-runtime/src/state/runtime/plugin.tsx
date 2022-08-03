@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { RuntimeReactContext } from '@modern-js/runtime-core';
 import { createStore, Store } from '@modern-js-reduck/store';
 import { Provider } from '@modern-js-reduck/react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import type { Plugin } from '@modern-js/runtime-core';
+import { RuntimeReactContext } from '../../core';
+import type { Plugin } from '../../core';
 import { isBrowser } from '../../common';
 
-declare module '@modern-js/runtime-core' {
+declare module '../../core' {
   interface RuntimeContext {
     store: Store;
   }

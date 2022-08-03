@@ -76,7 +76,6 @@
   },
   "devDependencies": {
     "@modern-js/core": "workspace:*",
-    "@modern-js/runtime-core": "workspace:*",
     "@modern-js/runtime": "workspace:*",
     "@modern-js/types": "workspace:*",
     "@scripts/build": "workspace:*",

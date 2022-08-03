@@ -108,7 +108,6 @@
     "@modern-js-reduck/plugin-immutable": "^1.0.1",
     "@modern-js-reduck/store": "^1.0.3",
     "@modern-js/babel-compiler": "workspace:^1.2.6",
-    "@modern-js/runtime-core": "workspace:^1.5.4",
     "@modern-js/utils": "workspace:^1.8.0",
     "@modern-js/webpack": "workspace:^1.12.2",
     "@modern-js/babel-preset-app": "workspace:^1.5.0",
@@ -127,8 +126,17 @@
     "ts-jest": "^27.0.4",
     "yargs": "^17.0.1"
   },
+  "peerDependencies": {
+    "@modern-js/runtime": "workspace:^1.4.1"
+  },
+  "peerDependenciesMeta": {
+    "@modern-js/runtime": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@modern-js/core": "workspace:*",
+    "@modern-js/runtime": "workspace:*",
     "@modern-js/bff-core": "workspace:*",
     "@scripts/build": "workspace:*",
     "@scripts/jest-config": "workspace:*",

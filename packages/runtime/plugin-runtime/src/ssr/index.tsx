@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
-import type { Plugin } from '@modern-js/runtime-core';
 import { loadableReady } from '@loadable/component';
+import type { Plugin } from '../core';
 import { RenderLevel, SSRServerContext } from './serverRender/type';
 import { formatClient, mockResponse } from './utils';
 
-declare module '@modern-js/runtime-core' {
+declare module '../core' {
   interface RuntimeContext {
     ssrContext: SSRServerContext;
   }

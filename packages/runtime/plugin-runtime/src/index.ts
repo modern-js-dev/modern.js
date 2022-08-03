@@ -1,8 +1,9 @@
 import type { StateConfig } from './state';
 import type { RouterConfig } from './router';
 
-export type { RuntimeContext, TRuntimeContext } from '@modern-js/runtime-core';
+export type { Plugin, RuntimeContext, TRuntimeContext } from './core';
 export {
+  initialWrapper,
   createApp,
   createPlugin,
   useLoader,
@@ -12,9 +13,9 @@ export {
   defineConfig,
   registerInit,
   useRuntimeContext,
-} from '@modern-js/runtime-core';
+} from './core';
 
-declare module '@modern-js/runtime-core' {
+declare module './core' {
   interface AppConfig {
     router?: RouterConfig | boolean;
     state?: StateConfig | boolean;

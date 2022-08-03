@@ -102,7 +102,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.0",
-    "@modern-js/runtime-core": "workspace:^1.5.4",
     "@modern-js/utils": "workspace:^1.8.0",
     "@loadable/component": "^5.15.0",
     "@types/loadable__component": "^5.13.4",
@@ -127,7 +126,11 @@
     "@modern-js-reduck/react": "^1.0.1",
     "@modern-js-reduck/store": "^1.0.3",
     "@types/redux-logger": "^3.0.9",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "styled-components": "^5.3.1",
+    "@types/styled-components": "^5.1.14",
+    "@modern-js/plugin": "workspace:^1.4.2",
+    "invariant": "^2.2.4"
   },
   "devDependencies": {
     "@modern-js/core": "workspace:*",
@@ -146,11 +149,12 @@
     "@types/serialize-javascript": "^5.0.1",
     "@scripts/jest-config": "workspace:*",
     "@modern-js/plugin": "workspace:*",
-    "@modern-js/runtime-core": "workspace:*",
     "@testing-library/react": "^12.0.0",
     "@types/hoist-non-react-statics": "^3.3.1",
     "react-dom": "^17",
-    "ts-jest": "^27.0.4"
+    "ts-jest": "^27.0.4",
+    "@testing-library/react-hooks": "^7.0.1",
+    "@types/invariant": "^2.2.30"
   },
   "sideEffects": false,
   "modernConfig": {},

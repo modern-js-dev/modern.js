@@ -425,7 +425,7 @@ importers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
       '@modern-js/plugin-testing': workspace:*
-      '@modern-js/runtime-core': workspace:*
+      '@modern-js/runtime': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
       '@types/hoist-non-react-statics': ^3.3.1
@@ -446,7 +446,7 @@ importers:
     devDependencies:
       '@modern-js/core': link:../core
       '@modern-js/plugin-testing': link:../plugin-testing
-      '@modern-js/runtime-core': link:../../runtime/runtime-core
+      '@modern-js/runtime': link:../../runtime/plugin-runtime
       '@scripts/build': link:../../../scripts/build
       '@types/hoist-non-react-statics': 3.3.1
       '@types/jest': 27.5.2
@@ -566,7 +566,7 @@ importers:
   packages/cli/plugin-fetch:
     specifiers:
       '@babel/runtime': ^7.18.0
-      '@modern-js/runtime-core': workspace:*
+      '@modern-js/runtime': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
       '@scripts/jest-config': workspace:*
@@ -585,7 +585,7 @@ importers:
       '@modern-js/utils': link:../../toolkit/utils
       isomorphic-fetch: 3.0.0
     devDependencies:
-      '@modern-js/runtime-core': link:../../runtime/runtime-core
+      '@modern-js/runtime': link:../../runtime/plugin-runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
@@ -603,7 +603,6 @@ importers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
       '@modern-js/runtime': workspace:*
-      '@modern-js/runtime-core': workspace:*
       '@modern-js/types': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@scripts/build': workspace:*
@@ -642,7 +641,6 @@ importers:
     devDependencies:
       '@modern-js/core': link:../core
       '@modern-js/runtime': link:../../runtime/plugin-runtime
-      '@modern-js/runtime-core': link:../../runtime/runtime-core
       '@modern-js/types': link:../../toolkit/types
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
@@ -948,7 +946,6 @@ importers:
       '@babel/runtime': ^7.18.0
       '@modern-js/core': workspace:*
       '@modern-js/runtime': workspace:*
-      '@modern-js/runtime-core': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@modern-js/webpack': workspace:^1.12.2
       '@scripts/build': workspace:*
@@ -1001,7 +998,6 @@ importers:
       '@babel/core': 7.18.6
       '@modern-js/core': link:../core
       '@modern-js/runtime': link:../../runtime/plugin-runtime
-      '@modern-js/runtime-core': link:../../runtime/runtime-core
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@storybook/addons': 6.5.9_react-dom@17.0.2+react@17.0.2
@@ -1065,7 +1061,7 @@ importers:
       '@modern-js/bff-core': workspace:*
       '@modern-js/core': workspace:*
       '@modern-js/plugin': workspace:^1.4.1
-      '@modern-js/runtime-core': workspace:^1.5.4
+      '@modern-js/runtime': workspace:*
       '@modern-js/server': workspace:^1.6.0
       '@modern-js/utils': workspace:^1.8.0
       '@modern-js/webpack': workspace:^1.12.2
@@ -1103,7 +1099,6 @@ importers:
       '@modern-js/babel-compiler': link:../../toolkit/compiler/babel
       '@modern-js/babel-preset-app': link:../babel-preset-app
       '@modern-js/plugin': link:../../toolkit/plugin
-      '@modern-js/runtime-core': link:../../runtime/runtime-core
       '@modern-js/server': link:../../server/server
       '@modern-js/utils': link:../../toolkit/utils
       '@modern-js/webpack': link:../webpack
@@ -1123,6 +1118,7 @@ importers:
       '@jest/types': 27.5.1
       '@modern-js/bff-core': link:../../server/bff-core
       '@modern-js/core': link:../core
+      '@modern-js/runtime': link:../../runtime/plugin-runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/jest': 27.5.2
@@ -2080,16 +2076,17 @@ importers:
       '@modern-js-reduck/react': ^1.0.1
       '@modern-js-reduck/store': ^1.0.3
       '@modern-js/core': workspace:*
-      '@modern-js/plugin': workspace:*
-      '@modern-js/runtime-core': workspace:^1.5.4
+      '@modern-js/plugin': workspace:^1.4.2
       '@modern-js/types': workspace:*
       '@modern-js/utils': workspace:^1.8.0
       '@modern-js/webpack': workspace:^1.12.2
       '@scripts/build': workspace:*
       '@scripts/jest-config': workspace:*
       '@testing-library/react': ^12.0.0
+      '@testing-library/react-hooks': ^7.0.1
       '@types/history': ^4.7.9
       '@types/hoist-non-react-statics': ^3.3.1
+      '@types/invariant': ^2.2.30
       '@types/jest': ^27
       '@types/loadable__component': ^5.13.4
       '@types/loadable__webpack-plugin': ^5.7.3
@@ -2101,8 +2098,10 @@ importers:
       '@types/react-side-effect': ^1.1.1
       '@types/redux-logger': ^3.0.9
       '@types/serialize-javascript': ^5.0.1
+      '@types/styled-components': ^5.1.14
       history: ^4.7.9
       hoist-non-react-statics: ^3.3.2
+      invariant: ^2.2.4
       jest: ^27
       react: ^17
       react-dom: ^17
@@ -2112,6 +2111,7 @@ importers:
       react-side-effect: ^2.1.1
       redux-logger: ^3.0.6
       serialize-javascript: ^6.0.0
+      styled-components: ^5.3.1
       ts-jest: ^27.0.4
       typescript: ^4
     dependencies:
@@ -2126,7 +2126,7 @@ importers:
       '@modern-js-reduck/plugin-immutable': 1.0.1_@modern-js-reduck+store@1.0.4
       '@modern-js-reduck/react': 1.0.1_react@17.0.2
       '@modern-js-reduck/store': 1.0.4
-      '@modern-js/runtime-core': link:../runtime-core
+      '@modern-js/plugin': link:../../toolkit/plugin
       '@modern-js/utils': link:../../toolkit/utils
       '@modern-js/webpack': link:../../cli/webpack
       '@types/history': 4.7.11
@@ -2134,69 +2134,19 @@ importers:
       '@types/react-helmet': 6.1.5
       '@types/react-router-dom': 5.3.3
       '@types/redux-logger': 3.0.9
+      '@types/styled-components': 5.1.25
       history: 4.10.1
       hoist-non-react-statics: 3.3.2
+      invariant: 2.2.4
       react-helmet: 6.1.0_react@17.0.2
       react-is: 17.0.2
       react-router-dom: 5.3.3_react@17.0.2
       react-side-effect: 2.1.2_react@17.0.2
       redux-logger: 3.0.6
       serialize-javascript: 6.0.0
-    devDependencies:
-      '@modern-js/core': link:../../cli/core
-      '@modern-js/plugin': link:../../toolkit/plugin
-      '@modern-js/types': link:../../toolkit/types
-      '@scripts/build': link:../../../scripts/build
-      '@scripts/jest-config': link:../../../scripts/jest-config
-      '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
-      '@types/hoist-non-react-statics': 3.3.1
-      '@types/jest': 27.5.2
-      '@types/loadable__webpack-plugin': 5.7.3
-      '@types/node': 14.18.21
-      '@types/react': 17.0.47
-      '@types/react-dom': 17.0.17
-      '@types/react-side-effect': 1.1.1
-      '@types/serialize-javascript': 5.0.2
-      jest: 27.5.1
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      ts-jest: 27.1.5_27b3594916e202eb269ced724db061fb
-      typescript: 4.7.4
-
-  packages/runtime/runtime-core:
-    specifiers:
-      '@babel/runtime': ^7.18.0
-      '@modern-js/plugin': workspace:^1.4.2
-      '@modern-js/types': workspace:*
-      '@scripts/build': workspace:*
-      '@scripts/jest-config': workspace:*
-      '@testing-library/react': ^12.0.0
-      '@testing-library/react-hooks': ^7.0.1
-      '@types/hoist-non-react-statics': ^3.3.1
-      '@types/invariant': ^2.2.30
-      '@types/jest': ^27
-      '@types/node': ^14
-      '@types/react': ^17
-      '@types/react-dom': ^17
-      '@types/styled-components': ^5.1.14
-      hoist-non-react-statics: ^3.3.2
-      invariant: ^2.2.4
-      jest: ^27
-      react: ^17.0.2
-      react-dom: ^17.0.2
-      react-is: ^17
-      styled-components: ^5.3.1
-      ts-jest: ^27.0.4
-      typescript: ^4
-    dependencies:
-      '@babel/runtime': 7.18.6
-      '@modern-js/plugin': link:../../toolkit/plugin
-      '@types/styled-components': 5.1.25
-      hoist-non-react-statics: 3.3.2
-      invariant: 2.2.4
-      react-is: 17.0.2
       styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
     devDependencies:
+      '@modern-js/core': link:../../cli/core
       '@modern-js/types': link:../../toolkit/types
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
@@ -2205,9 +2155,12 @@ importers:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/invariant': 2.2.35
       '@types/jest': 27.5.2
+      '@types/loadable__webpack-plugin': 5.7.3
       '@types/node': 14.18.21
       '@types/react': 17.0.47
       '@types/react-dom': 17.0.17
+      '@types/react-side-effect': 1.1.1
+      '@types/serialize-javascript': 5.0.2
       jest: 27.5.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -14015,7 +13968,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
+      styled-components: 5.3.5_react-dom@17.0.2+react@17.0.2
     dev: false
 
   /babel-plugin-syntax-jsx/6.18.0:

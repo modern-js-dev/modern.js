@@ -1,7 +1,7 @@
 import React from 'react';
-import { createApp, createPlugin } from '@modern-js/runtime-core';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { createBrowserHistory } from 'history';
+import { createApp, createPlugin } from '../../src/core';
 import createRouterPlugin, { useLocation } from '../../src/router/runtime';
 import { useHistory } from '../../src/router';
 import { DefaultNotFound } from '../../src/router/runtime/DefaultNotFound';

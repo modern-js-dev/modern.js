@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Plugin } from '@modern-js/runtime-core';
+import type { Plugin } from '@modern-js/runtime';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { logger } from '../util';
 import { GarfishProvider } from './utils/Context';

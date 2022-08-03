@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialWrapper, createPlugin } from '@modern-js/runtime-core';
+import { initialWrapper, createPlugin } from '@modern-js/runtime';
 import { render } from '@testing-library/react';
 import { fetchPlugin, useFetch } from '../src/plugin';
 

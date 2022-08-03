@@ -1,4 +1,4 @@
-import type { Plugin } from '@modern-js/runtime-core';
+import type { Plugin } from '@modern-js/runtime';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { useContext } from 'react';
 
@@ -25,7 +25,7 @@ export default (
           useDesignTokenContext = false,
         } = options;
         if (useStyledComponentsThemeProvider && useDesignTokenContext) {
-          const { ThemeProvider } = require('@modern-js/runtime-core/styled');
+          const { ThemeProvider } = require('@modern-js/runtime/styled');
           return (
             <ThemeProvider theme={token}>
               <DesignTokenContext.Provider value={token}>
@@ -34,7 +34,7 @@ export default (
             </ThemeProvider>
           );
         } else if (useStyledComponentsThemeProvider) {
-          const { ThemeProvider } = require('@modern-js/runtime-core/styled');
+          const { ThemeProvider } = require('@modern-js/runtime/styled');
           return (
             <ThemeProvider theme={token}>
               <App {...props} />
