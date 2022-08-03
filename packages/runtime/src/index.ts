@@ -1,3 +1,4 @@
+import '@modern-js/core';
 import type { StateConfig } from './state';
 import type { RouterConfig } from './router';
 
