@@ -270,11 +270,11 @@
     },
     {
       "name": "@modern-js/runtime",
-      "path": "packages/cli/plugin-runtime"
+      "path": "packages/runtime/plugin-runtime"
     },
     {
       "name": "@modern-js/runtime-core",
-      "path": "packages/runtime"
+      "path": "packages/runtime/runtime-core"
     },
     {
       "name": "@modern-js/server",

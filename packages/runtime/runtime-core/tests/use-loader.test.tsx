@@ -23,7 +23,8 @@ const App = () => {
       <div
         onClick={() => {
           reload();
-        }}>
+        }}
+      >
         reload
       </div>
       {JSON.stringify({ data, loading, reloading, error })}
