@@ -57,9 +57,7 @@ export default (): CliPlugin => ({
             'devtools',
           ];
 
-          return internalPlugins.filter(
-            name => (stateConfig as any)[name] !== false,
-          );
+          return internalPlugins.filter(name => stateConfig[name] !== false);
         };
 
         if (stateConfig) {

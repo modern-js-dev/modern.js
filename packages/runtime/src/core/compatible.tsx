@@ -120,7 +120,7 @@ export const bootstrap: BootStrap = async (
   const context: any = getInitialContext(runner);
 
   const runInit = (_context: RuntimeContext) =>
-    runner!.init(
+    runner.init(
       { context: _context },
       {
         onLast: ({ context: context1 }) => (App as any)?.init?.(context1),

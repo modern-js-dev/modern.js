@@ -306,7 +306,7 @@ importers:
     devDependencies:
       '@modern-js/bff-runtime': link:../../server/bff-runtime
       '@modern-js/core': link:../core
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@modern-js/server-core': link:../../server/core
       '@modern-js/types': link:../../toolkit/types
       '@scripts/build': link:../../../scripts/build
@@ -446,7 +446,7 @@ importers:
     devDependencies:
       '@modern-js/core': link:../core
       '@modern-js/plugin-testing': link:../plugin-testing
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@scripts/build': link:../../../scripts/build
       '@types/hoist-non-react-statics': 3.3.1
       '@types/jest': 27.5.2
@@ -585,7 +585,7 @@ importers:
       '@modern-js/utils': link:../../toolkit/utils
       isomorphic-fetch: 3.0.0
     devDependencies:
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
@@ -640,7 +640,7 @@ importers:
       react-loadable: 5.5.0_react@17.0.2
     devDependencies:
       '@modern-js/core': link:../core
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@modern-js/types': link:../../toolkit/types
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
@@ -997,7 +997,7 @@ importers:
     devDependencies:
       '@babel/core': 7.18.6
       '@modern-js/core': link:../core
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@storybook/addons': 6.5.9_react-dom@17.0.2+react@17.0.2
@@ -1118,7 +1118,7 @@ importers:
       '@jest/types': 27.5.1
       '@modern-js/bff-core': link:../../server/bff-core
       '@modern-js/core': link:../core
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@scripts/build': link:../../../scripts/build
       '@scripts/jest-config': link:../../../scripts/jest-config
       '@types/jest': 27.5.2
@@ -2062,7 +2062,7 @@ importers:
     devDependencies:
       '@scripts/build': link:../../../scripts/build
 
-  packages/runtime/plugin-runtime:
+  packages/runtime:
     specifiers:
       '@babel/core': ^7.18.0
       '@babel/runtime': ^7.18.0
@@ -2126,9 +2126,9 @@ importers:
       '@modern-js-reduck/plugin-immutable': 1.0.1_@modern-js-reduck+store@1.0.4
       '@modern-js-reduck/react': 1.0.1_react@17.0.2
       '@modern-js-reduck/store': 1.0.4
-      '@modern-js/plugin': link:../../toolkit/plugin
-      '@modern-js/utils': link:../../toolkit/utils
-      '@modern-js/webpack': link:../../cli/webpack
+      '@modern-js/plugin': link:../toolkit/plugin
+      '@modern-js/utils': link:../toolkit/utils
+      '@modern-js/webpack': link:../cli/webpack
       '@types/history': 4.7.11
       '@types/loadable__component': 5.13.4
       '@types/react-helmet': 6.1.5
@@ -2146,10 +2146,10 @@ importers:
       serialize-javascript: 6.0.0
       styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
     devDependencies:
-      '@modern-js/core': link:../../cli/core
-      '@modern-js/types': link:../../toolkit/types
-      '@scripts/build': link:../../../scripts/build
-      '@scripts/jest-config': link:../../../scripts/jest-config
+      '@modern-js/core': link:../cli/core
+      '@modern-js/types': link:../toolkit/types
+      '@scripts/build': link:../../scripts/build
+      '@scripts/jest-config': link:../../scripts/jest-config
       '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
       '@testing-library/react-hooks': 7.0.2_react-dom@17.0.2+react@17.0.2
       '@types/hoist-non-react-statics': 3.3.1
@@ -2536,7 +2536,7 @@ importers:
       type-is: 1.6.18
     devDependencies:
       '@modern-js/core': link:../../cli/core
-      '@modern-js/runtime': link:../../runtime/plugin-runtime
+      '@modern-js/runtime': link:../../runtime
       '@modern-js/server-core': link:../core
       '@nestjs/common': 8.4.7_e7ea248743279784063e3708d703abc5
       '@nestjs/core': 8.4.7_2aa064eef171d5a7957432d22e4b3f20
@@ -3514,7 +3514,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       axios: 0.24.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -3545,7 +3545,7 @@ importers:
       '@babel/runtime': 7.18.6
       '@modern-js/plugin-bff': link:../../../packages/cli/plugin-bff
       '@modern-js/plugin-koa': link:../../../packages/server/plugin-koa
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       koa: 2.13.4
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -3585,7 +3585,7 @@ importers:
       '@babel/runtime': 7.18.6
       '@modern-js/plugin-bff': link:../../../packages/cli/plugin-bff
       '@modern-js/plugin-express': link:../../../packages/server/plugin-express
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       express: 4.18.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -3609,7 +3609,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3621,7 +3621,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3633,7 +3633,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3645,7 +3645,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3657,7 +3657,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3669,7 +3669,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3685,7 +3685,7 @@ importers:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
       '@modern-js/plugin-sass': link:../../../../../packages/cli/plugin-sass
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3697,7 +3697,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3709,7 +3709,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3724,7 +3724,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       antd: 4.21.4_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -3737,7 +3737,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3749,7 +3749,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3761,7 +3761,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3773,7 +3773,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3785,7 +3785,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3799,7 +3799,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3813,7 +3813,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-sass': link:../../../../../packages/cli/plugin-sass
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3825,7 +3825,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3837,7 +3837,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3849,7 +3849,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3863,7 +3863,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3877,7 +3877,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3891,7 +3891,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3902,7 +3902,7 @@ importers:
       react: ^17.0.1
       react-dom: ^17.0.1
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -3918,7 +3918,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3932,7 +3932,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-sass': link:../../../../../packages/cli/plugin-sass
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3944,7 +3944,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3956,7 +3956,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3967,7 +3967,7 @@ importers:
       react: ^17.0.1
       react-dom: ^17.0.1
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -3983,7 +3983,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-less': link:../../../../../packages/cli/plugin-less
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3997,7 +3997,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-sass': link:../../../../../packages/cli/plugin-sass
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -4009,7 +4009,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -4024,7 +4024,7 @@ importers:
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
       '@modern-js/plugin-tailwindcss': link:../../../../../packages/cli/plugin-tailwind
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       twin.macro: 2.8.2
@@ -4047,7 +4047,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4068,7 +4068,7 @@ importers:
       typescript: ^4
     dependencies:
       '@modern-js/plugin-garfish': link:../../../../packages/cli/plugin-garfish
-      '@modern-js/runtime': link:../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4093,7 +4093,7 @@ importers:
       typescript: ^4
     dependencies:
       '@modern-js/plugin-garfish': link:../../../../packages/cli/plugin-garfish
-      '@modern-js/runtime': link:../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4120,7 +4120,7 @@ importers:
     dependencies:
       '@arco-design/web-react': 2.36.0_6b79dcf651fa0d4fc8b46fa68013a7bf
       '@modern-js/plugin-garfish': link:../../../../packages/cli/plugin-garfish
-      '@modern-js/runtime': link:../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4138,7 +4138,7 @@ importers:
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4151,7 +4151,7 @@ importers:
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4165,7 +4165,7 @@ importers:
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       antd: 4.21.4_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -4179,7 +4179,7 @@ importers:
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4308,7 +4308,7 @@ importers:
       react-dom: ^17.0.1
       typescript: ^4
     dependencies:
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4331,7 +4331,7 @@ importers:
     dependencies:
       '@babel/runtime': 7.18.6
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -4345,7 +4345,7 @@ importers:
     dependencies:
       '@babel/runtime': 7.18.6
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -4367,7 +4367,7 @@ importers:
       typescript: ^4
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -4394,7 +4394,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       axios: 0.24.0
       express: 4.18.1
       react: 17.0.2
@@ -4414,7 +4414,7 @@ importers:
       react-dom: ^17.0.1
     dependencies:
       '@modern-js/app-tools': link:../../../../../packages/solutions/app-tools
-      '@modern-js/runtime': link:../../../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -4434,7 +4434,7 @@ importers:
       typescript: ^4
     dependencies:
       '@babel/runtime': 7.18.6
-      '@modern-js/runtime': link:../../../packages/runtime/plugin-runtime
+      '@modern-js/runtime': link:../../../packages/runtime
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:

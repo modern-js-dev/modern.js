@@ -30,7 +30,7 @@ const ssr = (): Plugin => ({
         const renderLevel = window?._SSR_DATA?.renderLevel;
 
         if (renderLevel === RenderLevel.CLIENT_RENDER) {
-          await (App as any)?.prefetch?.(context);
+          await App?.prefetch?.(context);
           ReactDOM.render(<App context={context} />, rootElement);
         } else if (renderLevel === RenderLevel.SERVER_RENDER) {
           loadableReady(() => {
@@ -40,7 +40,7 @@ const ssr = (): Plugin => ({
               rootElement,
               () => {
                 // won't cause component re-render because context's reference identity doesn't change
-                delete (hydrateContext as any)._hydration;
+                delete hydrateContext._hydration;
               },
             );
           });
