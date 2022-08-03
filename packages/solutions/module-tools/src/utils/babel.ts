@@ -1,10 +1,7 @@
 import path from 'path';
-import {
-  getBabelConfig,
-  applyUserBabelConfig,
-} from '@modern-js/babel-preset-module';
 import { applyOptionsChain, getAlias, isUseSSRBundle } from '@modern-js/utils';
 import type { NormalizedConfig } from '@modern-js/core';
+import { getBabelConfig, applyUserBabelConfig } from '../babel';
 import type { IPackageModeValue } from '../types';
 import type { BundlelessOptions, SourceMap } from '../schema/types';
 

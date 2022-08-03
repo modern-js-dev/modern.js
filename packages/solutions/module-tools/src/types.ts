@@ -1,4 +1,3 @@
-import type { ImportStyleType } from '@modern-js/babel-preset-module';
 import type { CLIConfig as SpeedyConfig } from '@speedy-js/speedy-core';
 import type { LoggerText } from './features/build/logger/logText';
 import type { Platform } from './features/build/build-platform';
@@ -8,6 +7,7 @@ import type {
   PackageModeType,
   PackageFields,
 } from './schema/types';
+import type { ImportStyleType } from './babel';
 
 export type { Platform } from './features/build/build-platform';
 export type { ITsconfig } from './utils/tsconfig';

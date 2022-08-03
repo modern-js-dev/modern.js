@@ -33,10 +33,6 @@
       "path": "packages/cli/babel-preset-lib"
     },
     {
-      "name": "@modern-js/babel-preset-module",
-      "path": "packages/cli/babel-preset-module"
-    },
-    {
       "name": "@modern-js/base-generator",
       "path": "packages/generator/generators/base-generator"
     },
